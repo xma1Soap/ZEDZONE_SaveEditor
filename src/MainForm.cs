@@ -54,7 +54,7 @@ namespace ZedZoneSaveEditor
         private bool _switchingSelection;
         private bool _snapshotMode;
 
-        private const string AppTitle = "隔离区 ZED ZONE 人物存档修改器 v1.5 测试版";
+        private const string AppTitle = "隔离区 ZED ZONE 人物存档修改器 v1.5";
 
         public MainForm()
         {
