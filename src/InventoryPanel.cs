@@ -1222,6 +1222,14 @@ namespace ZedZoneSaveEditor
             SelectItems(new[] { small.Msg });
             DoCopy();
             r.Add(("复制后列表多一件", _list.Items.Count == before + 1));
+            // 复制的那件可能正好落进刚腾出来的空地（存档很满时），再腾一次，保证后面的 8×10 背包放得下
+            while (_box.FindSpot(8, 10) == null && deleted < 20 && _list.Items.Count > 1)
+            {
+                var big = CurrentItems().OrderByDescending(x => x.W * x.H).First();
+                SelectItems(new[] { big.Msg });
+                DoDelete();
+                deleted++;
+            }
 
             // 5) 添加：一个新背包（树上应该多一个节点）+ 150 个木材，第一份放到指定的空格
             int nodesBefore = CountNodes(_tree.Nodes);
