@@ -47,7 +47,7 @@ namespace ZedZoneSaveEditor
             {
                 int tab = Array.IndexOf(args, "--multi") >= 0 ? 1 : 0;
                 int eqd = Array.IndexOf(args, "--equipdlg");
-                int right = Array.IndexOf(args, "--equip") >= 0 ? 2 : Array.IndexOf(args, "--inv") >= 0 ? 1 : 0;
+                int right = Array.IndexOf(args, "--equip") >= 0 ? 2 : Array.IndexOf(args, "--state") >= 0 ? 3 : Array.IndexOf(args, "--inv") >= 0 ? 1 : 0;
                 new MainForm().Snapshot(args[snap + 1], tab, Array.IndexOf(args, "--heal") >= 0, right,
                     eqd >= 0 && eqd + 1 < args.Length ? args[eqd + 1] : null);
                 return 0;

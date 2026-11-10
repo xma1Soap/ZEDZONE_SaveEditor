@@ -28,6 +28,11 @@ namespace ZedZoneSaveEditor
             _btnRepair = new Button(), _btnFill = new Button(), _btnAll = new Button(), _btnUnequip = new Button();
         private readonly GridView _grid = new GridView();
         private readonly ContextMenuStrip _menu = new ContextMenuStrip();
+        private readonly TableLayoutPanel _stateBox = new TableLayoutPanel { AutoSize = true, Dock = DockStyle.Fill, ColumnCount = 2, RowCount = 1, Margin = new Padding(0) };
+        private readonly Label _stateLabel = new Label { Text = "状态", AutoSize = true, Margin = new Padding(3, 7, 3, 3), Visible = false };
+        private readonly FlowLayoutPanel _stateRow = new FlowLayoutPanel { AutoSize = true, Dock = DockStyle.Fill, WrapContents = true, Margin = new Padding(0) };
+        private readonly List<(StateField f, Control c)> _stateCtrls = new List<(StateField, Control)>();
+        private ItemView _stateItem;
 
         private LoadedSave _save;
         private CharacterInventory _inv;
@@ -72,12 +77,13 @@ namespace ZedZoneSaveEditor
             split.Panel1.Controls.Add(leftTable);
 
             // ---- 右：工具条 + 列表 + 编辑 | 格子图 ----
-            var right = new TableLayoutPanel { Dock = DockStyle.Fill, ColumnCount = 2, RowCount = 5 };
+            var right = new TableLayoutPanel { Dock = DockStyle.Fill, ColumnCount = 2, RowCount = 6 };
             right.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100));
             right.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 270));
             right.RowStyles.Add(new RowStyle(SizeType.AutoSize));
             right.RowStyles.Add(new RowStyle(SizeType.AutoSize));
             right.RowStyles.Add(new RowStyle(SizeType.Percent, 100));
+            right.RowStyles.Add(new RowStyle(SizeType.AutoSize));
             right.RowStyles.Add(new RowStyle(SizeType.AutoSize));
             right.RowStyles.Add(new RowStyle(SizeType.AutoSize));
             split.Panel2.Controls.Add(right);
@@ -103,7 +109,7 @@ namespace ZedZoneSaveEditor
             var tip = new ToolTip();
             tip.SetToolTip(_btnAdd, "从全部物品里搜一种放进当前背包（也可以在右边格子图的空格上点右键「在这里添加」）。");
             tip.SetToolTip(_btnRepair, "耐久回满；武器、弹匣、枪械配件修到全新（枪上装的配件一起修）；食物变成刚做好的。");
-            tip.SetToolTip(_btnFill, "能堆叠的东西数量补到上限；弹匣装满子弹；水壶之类装满原来装的液体。");
+            tip.SetToolTip(_btnFill, "能堆叠的东西数量补到上限；弹匣和枪里的子弹装满；水壶之类装满原来装的液体。");
             tip.SetToolTip(_btnUnequip, "把选中的装备卸下来，放进身上背包的空位。");
             tip.SetToolTip(_btnCopy, "照选中的物品再放一个到空位上。背包的话只复制空背包，里面的东西不复制。");
             right.Controls.Add(bar, 0, 1);
@@ -159,6 +165,12 @@ namespace ZedZoneSaveEditor
             edit.Controls.Add(_numDur);
             edit.Controls.Add(new Label { Text = "（0～100）", AutoSize = true, ForeColor = Color.DimGray, Margin = new Padding(0, 7, 3, 3) });
             right.Controls.Add(edit, 0, 4);
+            // 状态（枪况、保质期、装的液体……），按选中的物品变；左边「状态」两个字，右边各项，换行后对齐
+            _stateBox.ColumnStyles.Add(new ColumnStyle(SizeType.AutoSize));
+            _stateBox.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100));
+            _stateBox.Controls.Add(_stateLabel, 0, 0);
+            _stateBox.Controls.Add(_stateRow, 1, 0);
+            right.Controls.Add(_stateBox, 0, 5);
 
             // 格子图 + 操作提示
             var gridBox = new Panel { Dock = DockStyle.Fill, Margin = new Padding(6, 3, 0, 3) };
@@ -171,7 +183,7 @@ namespace ZedZoneSaveEditor
             gridBox.Controls.Add(_grid);
             gridBox.Controls.Add(gridHint);
             right.Controls.Add(gridBox, 1, 1);
-            right.SetRowSpan(gridBox, 4);
+            right.SetRowSpan(gridBox, 5);
 
             _grid.ItemClicked += it => SelectItems(new[] { it.Msg });
             _grid.ItemDoubleClicked += OpenInner;
@@ -400,6 +412,7 @@ namespace ZedZoneSaveEditor
                     _numCount.Enabled = info.Stackable || it.Count > 1;
                     _numDur.Value = Clamp((decimal)it.Durability, 0, 100);
                     _numDur.Enabled = true;
+                    BuildStateEditors(it);
                 }
                 else
                 {
@@ -407,6 +420,7 @@ namespace ZedZoneSaveEditor
                     _numCount.Enabled = false;
                     _numDur.Enabled = false;
                 }
+                if (sel.Count != 1) BuildStateEditors(null);
                 _grid.SetSelection(sel.Select(x => x.Msg).ToList());
             }
             finally { _updating = false; }
@@ -414,6 +428,126 @@ namespace ZedZoneSaveEditor
         }
 
         private static decimal Clamp(decimal v, decimal lo, decimal hi) => v < lo ? lo : v > hi ? hi : v;
+
+        // ---------- 状态编辑（枪况、子弹、保质期、装的液体……） ----------
+
+        private sealed class Choice
+        {
+            public readonly int Id;
+            private readonly string _name;
+            public Choice(int id, string name) { Id = id; _name = name; }
+            public override string ToString() => _name;
+        }
+
+        private static string Fmt(float v) => v.ToString(Math.Abs(v - Math.Round(v)) < 0.001 ? "0" : "0.#", System.Globalization.CultureInfo.InvariantCulture);
+
+        /// <summary>按选中的物品重建「状态」那一行（没有能改的就空着）。</summary>
+        private void BuildStateEditors(ItemView it)
+        {
+            _stateRow.SuspendLayout();
+            var old = _stateRow.Controls.Cast<Control>().ToList();
+            _stateRow.Controls.Clear();
+            foreach (var c in old) c.Dispose();
+            _stateCtrls.Clear();
+            _stateItem = it;
+            var fields = it == null ? new List<StateField>() : ItemStates.For(it);
+            _stateLabel.Visible = fields.Count > 0;
+            foreach (var f in fields)
+            {
+                // 每一项（名字、输入框、上限）放进一个小框，宽度不够时整项换到下一行，不会把名字和输入框拆开
+                var grp = new FlowLayoutPanel { AutoSize = true, AutoSizeMode = AutoSizeMode.GrowAndShrink, WrapContents = false, Margin = new Padding(0, 0, 9, 0) };
+                grp.Controls.Add(new Label { Text = f.Label, AutoSize = true, Margin = new Padding(3, 7, 3, 3) });
+                Control c;
+                if (f.Choices != null)
+                {
+                    var cb = new ComboBox { DropDownStyle = ComboBoxStyle.DropDownList, Width = 96 };
+                    foreach (var (id, name) in f.Choices) cb.Items.Add(new Choice(id, name));
+                    var field = f;
+                    cb.SelectedIndexChanged += (s, e) =>
+                    {
+                        if (_updating || !(cb.SelectedItem is Choice ch)) return;
+                        field.Set(ch.Id);
+                        AfterStateEdit();
+                    };
+                    c = cb;
+                }
+                else
+                {
+                    var n = new NumericUpDown
+                    {
+                        Width = 84, DecimalPlaces = f.Decimals, Minimum = (decimal)f.Min, Maximum = (decimal)f.Max,
+                        TextAlign = HorizontalAlignment.Right,
+                    };
+                    var field = f;
+                    n.ValueChanged += (s, e) =>
+                    {
+                        if (_updating) return;
+                        field.Set((float)n.Value);
+                        AfterStateEdit();
+                    };
+                    c = n;
+                }
+                c.Tag = f;
+                grp.Controls.Add(c);
+                _stateCtrls.Add((f, c));
+                if (f.Choices == null)
+                    grp.Controls.Add(new Label { Text = "/ " + Fmt(f.Max), AutoSize = true, ForeColor = Color.DimGray, Margin = new Padding(0, 7, 3, 3) });
+                _stateRow.Controls.Add(grp);
+            }
+            RefreshStateValues();
+            _stateRow.ResumeLayout();
+        }
+
+        private void RefreshStateValues()
+        {
+            bool was = _updating;
+            _updating = true;
+            try
+            {
+                foreach (var (f, c) in _stateCtrls)
+                {
+                    if (c is NumericUpDown n)
+                        n.Value = Clamp((decimal)Math.Round(f.Get(), f.Decimals), n.Minimum, n.Maximum);
+                    else if (c is ComboBox cb)
+                    {
+                        int v = (int)Math.Round(f.Get());
+                        int idx = cb.Items.Cast<Choice>().ToList().FindIndex(x => x.Id == v);
+                        if (idx < 0) idx = cb.Items.Add(new Choice(v, ItemDb.Get(v).Name));
+                        cb.SelectedIndex = idx;
+                    }
+                    c.Enabled = f.Enabled?.Invoke() ?? true;
+                }
+            }
+            finally { _updating = was; }
+        }
+
+        private void AfterStateEdit()
+        {
+            RefreshStateValues();
+            if (_stateItem != null) RefreshRow(_stateItem);
+            MarkChanged(null);
+        }
+
+        /// <summary>界面自测：按名字找到状态里的一项，像用户一样改它的值。</summary>
+        internal bool SetStateField(string label, float v)
+        {
+            foreach (var (f, c) in _stateCtrls)
+            {
+                if (f.Label != label || !c.Enabled) continue;
+                if (c is NumericUpDown n) { n.Value = Clamp((decimal)v, n.Minimum, n.Maximum); return true; }
+                if (c is ComboBox cb)
+                {
+                    int idx = cb.Items.Cast<Choice>().ToList().FindIndex(x => x.Id == (int)v);
+                    if (idx < 0) return false;
+                    cb.SelectedIndex = idx;
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        internal bool HasStateField(string label) => _stateCtrls.Any(x => x.f.Label == label);
+        internal float StateMax(string label) => _stateCtrls.Where(x => x.f.Label == label).Select(x => x.f.Max).FirstOrDefault();
 
         private bool GridMode => _inv != null && _box != null && !_equipView;
 
@@ -460,6 +594,22 @@ namespace ZedZoneSaveEditor
         internal void PreviewSelect(int n)
         {
             if (n >= 0 && n < _list.Items.Count && ItemOf(_list.Items[n]) is ItemView it) SelectItems(new[] { it.Msg });
+        }
+
+        /// <summary>截图自查用：选中一件带「状态」的东西（先找枪，再找别的）。</summary>
+        internal void PreviewSelectState()
+        {
+            List<ItemView> Items() => _list.Items.Cast<ListViewItem>().Select(ItemOf).OfType<ItemView>().ToList();
+            bool IsGun(ItemView x) => x.Info.Kind == ItemKind.RangedWeapon && ItemStates.For(x).Count >= 2;
+            if (!Items().Any(IsGun))
+            {
+                var node = AllNodes(_tree.Nodes).FirstOrDefault(n =>
+                    n.Tag is ContainerView c && c.Items.Any(IsGun));
+                if (node != null) _tree.SelectedNode = node;
+            }
+            var items = Items();
+            var it = items.FirstOrDefault(IsGun) ?? items.FirstOrDefault(x => ItemStates.For(x).Count > 0);
+            if (it != null) SelectItems(new[] { it.Msg });
         }
 
         private void SelectAll()
@@ -979,6 +1129,7 @@ namespace ZedZoneSaveEditor
         {
             var r = new List<(string, bool)>();
             Quiet = true;
+            Status += m => r.Add(("（提示）" + m, true));     // 程序给用户的提示也记进报告，方便查问题
             r.Add(("背包页有格子区", _box != null && _list.Items.Count > 0));
             r.Add(("物品图标读进来了", ItemIcons.Has(0) && ItemIcons.Has(503) && ItemIcons.Has(10001)));
             r.Add(("「添加物品」按钮可以点", _btnAdd.Enabled && _btnAdd.Visible));
@@ -1013,15 +1164,32 @@ namespace ZedZoneSaveEditor
             DoFill();
             r.Add(("补满后能叠的都满了", CurrentItems().All(x => !x.Info.Stackable || x.Count >= x.Info.Stack)));
 
-            // 4) 复制一件小东西，再删掉占地最大的一件（腾出地方）
-            var small = CurrentItems().First(x => x.Inventory == null);
+            // 4) 删掉占地最大的几件腾出地方（存档可能塞得很满：要够放后面的 8×10 背包，再多留些空格），再复制一件小东西
+            bool Roomy()
+            {
+                var occ = _box.Occupied();
+                var spot = _box.FindSpot(8, 10, occ);
+                if (spot == null) return false;
+                for (int x = spot.Value.X; x < spot.Value.X + 8; x++)
+                    for (int y = spot.Value.Y; y < spot.Value.Y + 10; y++) occ[x, y] = true;
+                int free = 0;
+                foreach (bool o in occ) if (!o) free++;
+                return free >= 24;
+            }
+            int deleted = 0;
+            while (!Roomy() && deleted < 20 && _list.Items.Count > 1)
+            {
+                var big = CurrentItems().OrderByDescending(x => x.W * x.H).First();
+                SelectItems(new[] { big.Msg });
+                DoDelete();
+                deleted++;
+            }
+            r.Add(("删除占地大的东西腾出地方", Roomy() && _list.Items.Count == before - deleted));
+            before = _list.Items.Count;
+            var small = CurrentItems().Where(x => x.Inventory == null).OrderBy(x => x.W * x.H).First();
             SelectItems(new[] { small.Msg });
             DoCopy();
             r.Add(("复制后列表多一件", _list.Items.Count == before + 1));
-            var big = CurrentItems().OrderByDescending(x => x.W * x.H).First();
-            SelectItems(new[] { big.Msg });
-            DoDelete();
-            r.Add(("删除后列表少一件", _list.Items.Count == before));
 
             // 5) 添加：一个新背包（树上应该多一个节点）+ 150 个木材，第一份放到指定的空格
             int nodesBefore = CountNodes(_tree.Nodes);
@@ -1108,6 +1276,46 @@ namespace ZedZoneSaveEditor
                 _tree.SelectedNode = AllNodes(_tree.Nodes).First(n => n.Tag is ContainerView c && c.Inv == newBagItem.Inventory);
                 put = AddItems(ItemDb.Get(420), 1);
                 r.Add(("往新背包里放了一把枪", put == 1 && _list.Items.Count == 2 + two.Count));
+
+                // 8b) 改状态：食物保质期、水壶装的东西、枪况、弹匣子弹、左轮子弹
+                foreach (var id in new[] { 210, 1101, 706, 406 }) AddItems(ItemDb.Get(id), 1);
+                ItemView Find(int id) => CurrentItems().LastOrDefault(x => x.Id == id);
+                r.Add(("放进去改状态用的四样东西", new[] { 210, 1101, 706, 406 }.All(id => Find(id) != null)));
+                if (new[] { 210, 1101, 706, 406, 420 }.All(id => Find(id) != null))
+                {
+                    SelectItems(new[] { Find(210).Msg });
+                    r.Add(("食物：还能放改成 3.5 天", SetStateField("还能放（天）", 3.5f) && Find(210).StateText == "还能放 3.5 天" &&
+                                                       _list.SelectedItems[0].SubItems[3].Text == "还能放 3.5 天"));
+                    SelectItems(new[] { Find(1101).Msg });
+                    r.Add(("水壶：空的时候「装了多少」不能改", HasStateField("装了多少") && !SetStateField("装了多少", 100)));
+                    r.Add(("水壶：选净水自动装满", SetStateField("装的", 1201) && Find(1101).Prop(0) == 1201 &&
+                                                   Math.Abs(Find(1101).Prop(1) - ItemDb.Get(1101).ExtraFloat("cap")) < 0.01));
+                    r.Add(("水壶：倒空再装 500 净水", SetStateField("装了多少", 0) && Find(1101).StateText == "空的" &&
+                                                     SetStateField("装的", 1201) && SetStateField("装了多少", 500) &&
+                                                     Find(1101).StateText.StartsWith("装着 净水 500/")));
+                    SelectItems(new[] { Find(420).Msg });
+                    r.Add(("枪：枪况改成 123（没插弹匣就没有子弹那项）", SetStateField("枪况", 123) && Math.Abs(Find(420).Prop(0) - 123) < 0.01 &&
+                                                                       !HasStateField("子弹") && !HasStateField("弹匣里的子弹")));
+                    // 插着弹匣的枪：[1] 弹匣编号 [2] 弹匣耐久 [3] 弹匣里的子弹；测完拔掉，恢复原样
+                    int magId = ItemDb.Get(ItemDb.Get(420).ExtraInt("mag")).Kind == ItemKind.Magazine ? ItemDb.Get(420).ExtraInt("mag") : 706;
+                    Find(420).SetProp(1, magId); Find(420).SetProp(2, 50); Find(420).SetProp(3, 0);
+                    SelectItems(new[] { Find(420).Msg });
+                    r.Add(("插着弹匣的枪：弹匣里的子弹改成 5、弹匣耐久改成 90", HasStateField("弹匣里的子弹") && HasStateField("弹匣耐久") &&
+                                                                         StateMax("弹匣里的子弹") == ItemDb.Get(magId).ExtraInt("cap") &&
+                                                                         SetStateField("弹匣里的子弹", 5) && SetStateField("弹匣耐久", 90) &&
+                                                                         Find(420).Prop(3) == 5 && Math.Abs(Find(420).Prop(2) - 90) < 0.01 &&
+                                                                         Find(420).StateText.Contains("弹匣 5/")));
+                    Find(420).SetProp(1, -1); Find(420).SetProp(2, 0); Find(420).SetProp(3, 0);
+                    SelectItems(new[] { Find(706).Msg });
+                    r.Add(("弹匣：子弹改成 3", SetStateField("子弹", 3) && Find(706).Prop(1) == 3 && StateMax("子弹") == ItemDb.Get(706).ExtraInt("cap")));
+                    SelectItems(new[] { Find(406).Msg });
+                    r.Add(("左轮：子弹改成 2，上限是弹仓容量", SetStateField("子弹", 2) && Find(406).Prop(1) == 2 &&
+                                                             StateMax("子弹") == ItemDb.Get(406).ExtraInt("cap") && ItemDb.Get(406).ExtraInt("cap") > 0));
+                    DoFill();
+                    r.Add(("补满：左轮子弹装满", Find(406).Prop(1) == ItemDb.Get(406).ExtraInt("cap")));
+                    SelectItems(new[] { Find(406).Msg });
+                    SetStateField("子弹", 2);
+                }
             }
 
             // 9) 装备栏：全部槽位都列出来（空的也列），能修、装上、卸下、换背包
@@ -1128,8 +1336,12 @@ namespace ZedZoneSaveEditor
                 Slot(63).Def.Accepts(ItemDb.Get(1617)) && Slot(68).Def.Accepts(ItemDb.Get(1083)) && !Slot(62).Def.Accepts(ItemDb.Get(1083))));
 
             // 选中空的处决工具槽 → 「装上」按钮；装一把新匕首（武器数组从 3 格长到 4 格）
-            SelectSlot(Slot(57, 3));
-            r.Add(("选中空槽，「装上」可以点", _btnAdd.Enabled && _btnAdd.Text.Contains("装上") && !_btnUnequip.Enabled));
+            var anyEmpty = _inv.Slots.FirstOrDefault(p => p.Empty && !p.Def.Legacy);
+            if (anyEmpty != null) SelectSlot(anyEmpty);
+            r.Add(("选中空槽，「装上」可以点", anyEmpty != null && _btnAdd.Enabled && _btnAdd.Text.Contains("装上") && !_btnUnequip.Enabled));
+            var anyFull = _inv.Slots.First(p => !p.Empty);
+            SelectSlot(anyFull);
+            r.Add(("选中装着东西的槽，变成「换一个」、能卸下", _btnAdd.Enabled && _btnAdd.Text.Contains("换一个") && _btnUnequip.Enabled));
             r.Add(("新匕首装进处决工具槽", EquipNew(Slot(57, 3), ItemDb.Get(70), 1) && Slot(57, 3).Item?.Id == 70 &&
                                           _inv.Cd.GetMsg(CharacterInventory.CdEquipment).GetMsgs(57).Count == 4));
             r.Add(("枪装不进处决工具槽", !EquipNew(Slot(57, 3), ItemDb.Get(420), 1) && Slot(57, 3).Item?.Id == 70));

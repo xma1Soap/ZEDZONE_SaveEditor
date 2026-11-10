@@ -246,85 +246,85 @@
 361	金属钓鱼竿	2	12	1	3	0	ItemAttr_MeleeWeapon		1.2	hp=50	1
 370	简易铲子	2	6	1	3	0	ItemAttr_MeleeWeapon		1.2	hp=100	2,18
 371	巨蜥牙刃	2	6	1	3	1	ItemAttr_MeleeWeapon		0.9	hp=300	
-400	雷明顿870霰弹枪	8	3	1	4	0	ItemAttr_RangedWeapon		3.2	hp=120,feed=1,auto=0,mag=0,air=0,slot=1	
-401	乌兹冲锋枪	6	3	1	4	0	ItemAttr_RangedWeapon		2.7	hp=400,feed=0,auto=1,mag=700,air=0,slot=1	
-402	MP5-K 冲锋枪	6	3	1	4	0	ItemAttr_RangedWeapon		2.1	hp=600,feed=0,auto=1,mag=702,air=0,slot=1	
-403	AR-15 突击步枪	10	4	1	4	0	ItemAttr_RangedWeapon		2.94	hp=400,feed=0,auto=1,mag=703,air=0,slot=1	
-404	ARX100 突击步枪	8	4	1	4	0	ItemAttr_RangedWeapon		3.08	hp=500,feed=0,auto=1,mag=704,air=0,slot=1	
-405	格洛克17	3	2	1	4	0	ItemAttr_RangedWeapon		0.8	hp=320,feed=0,auto=0,mag=705,air=0,slot=0	
-406	史密斯伟森 929 转轮手枪	3	2	1	4	0	ItemAttr_RangedWeapon		1.24	hp=360,feed=1,auto=0,mag=0,air=0,slot=0	
-407	鲁格10/22	6	3	1	4	0	ItemAttr_RangedWeapon		2.3	hp=600,feed=0,auto=0,mag=706,air=0,slot=1	
-408	KRISS Vector 卡宾枪	6	3	1	4	0	ItemAttr_RangedWeapon		2.7	hp=800,feed=0,auto=1,mag=707,air=0,slot=1	
-409	柯尔特 M1911-9mm	3	2	1	4	0	ItemAttr_RangedWeapon		0.7	hp=320,feed=0,auto=0,mag=705,air=0,slot=0	
-410	寻路者 .22转轮手枪	2	2	1	4	0	ItemAttr_RangedWeapon		0.92	hp=240,feed=1,auto=0,mag=0,air=0,slot=0	
-411	鲁格 GP100 .22	3	2	1	4	0	ItemAttr_RangedWeapon		1.28	hp=260,feed=1,auto=0,mag=0,air=0,slot=0	
-412	鲁格 MK IV	3	2	1	4	0	ItemAttr_RangedWeapon		0.99	hp=400,feed=0,auto=0,mag=710,air=0,slot=0	
-413	2011 Combat Master	3	2	1	4	0	ItemAttr_RangedWeapon		1.05	hp=420,feed=0,auto=0,mag=705,air=0,slot=0	
-414	格洛克18(全自动)	3	2	1	4	0	ItemAttr_RangedWeapon		0.92	hp=480,feed=0,auto=1,mag=700,air=0,slot=0	
-415	VSS微声步枪	8	4	1	4	0	ItemAttr_RangedWeapon		2.1	hp=700,feed=0,auto=1,mag=750,air=0,slot=1	
-416	B&T MP9	5	3	1	4	0	ItemAttr_RangedWeapon		1.45	hp=600,feed=0,auto=1,mag=700,air=0,slot=1	
-417	美洲180 (改装版)	8	3	1	4	0	ItemAttr_RangedWeapon		3.2	hp=800,feed=0,auto=1,mag=711,air=0,slot=1	
-418	MAC-11/9	4	3	1	4	0	ItemAttr_RangedWeapon		1.59	hp=800,feed=0,auto=1,mag=700,air=0,slot=0	
-419	柯尔特 M1911	3	2	1	4	0	ItemAttr_RangedWeapon		0.7	hp=300,feed=0,auto=0,mag=720,air=0,slot=0	
-420	塔沃尔 SAR 突击步枪	7	3	1	4	0	ItemAttr_RangedWeapon		3.18	hp=400,feed=0,auto=1,mag=704,air=0,slot=1	
-421	M249 通用机枪	9	4	1	4	0	ItemAttr_RangedWeapon		7.12	hp=1200,feed=0,auto=1,mag=741,air=0,slot=1	
-422	格洛克21C(全自动)	3	2	1	4	0	ItemAttr_RangedWeapon		0.8	hp=480,feed=0,auto=1,mag=722,air=0,slot=0	
-423	M3 冲锋枪	6	3	1	4	0	ItemAttr_RangedWeapon		3.1	hp=600,feed=0,auto=1,mag=722,air=0,slot=1	
-424	汤普森冲锋枪	7	3	1	4	0	ItemAttr_RangedWeapon		3.47	hp=500,feed=0,auto=1,mag=723,air=0,slot=1	
-430	AK47 突击步枪	7	3	1	4	0	ItemAttr_RangedWeapon		3.47	hp=520,feed=0,auto=1,mag=750,air=0,slot=1	
-431	鲁格M77	7	3	1	4	0	ItemAttr_RangedWeapon		3.06	hp=220,feed=1,auto=0,mag=0,air=0,slot=1	
-432	MK47步枪	7	3	1	4	0	ItemAttr_RangedWeapon		3.2	hp=360,feed=0,auto=0,mag=750,air=0,slot=1	
-433	RPK 轻机枪	9	4	1	4	0	ItemAttr_RangedWeapon		4.85	hp=1200,feed=0,auto=1,mag=752,air=0,slot=1	
-434	德利尔卡宾枪	7	3	1	4	0	ItemAttr_RangedWeapon		3.74	hp=400,feed=0,auto=0,mag=721,air=0,slot=1	
-440	鲁格.300马格南栓动步枪	8	3	1	4	0	ItemAttr_RangedWeapon		2.7	hp=120,feed=0,auto=0,mag=760,air=0,slot=1	
-441	温彻斯特70型步枪	8	3	1	4	0	ItemAttr_RangedWeapon		2.82	hp=140,feed=1,auto=0,mag=0,air=0,slot=1	
-445	GM6山猫反器材步枪	9	3	1	4	0	ItemAttr_RangedWeapon		12.9	hp=100,feed=0,auto=0,mag=770,air=0,slot=1	
-446	.50BMG 手腕摧毁者	6	3	1	4	0	ItemAttr_RangedWeapon		8.8	hp=60,feed=1,auto=0,mag=0,air=0,slot=0	
-447	25mm信号枪	3	2	1	4	0	ItemAttr_RangedWeapon		0.52	hp=100,feed=1,auto=0,mag=0,air=0,slot=0	
-450	复合弓	3	6	1	4	0	ItemAttr_RangedWeapon		2.2	hp=240,feed=0,auto=0,mag=-1,air=0,slot=1	
-451	木制弓	3	6	1	4	0	ItemAttr_RangedWeapon		2.4	hp=160,feed=0,auto=0,mag=-1,air=0,slot=1	
-455	木制十字弩	6	4	1	4	0	ItemAttr_RangedWeapon		2.45	hp=50,feed=1,auto=0,mag=-1,air=0,slot=1	
-456	铁质十字弩	6	4	1	4	0	ItemAttr_RangedWeapon		3.25	hp=120,feed=1,auto=0,mag=-1,air=0,slot=1	
-457	木制手弩	5	3	1	4	0	ItemAttr_RangedWeapon		1.65	hp=50,feed=1,auto=0,mag=-1,air=0,slot=0	
-458	机械十字弩	7	4	1	4	0	ItemAttr_RangedWeapon		3.6	hp=160,feed=1,auto=0,mag=-1,air=0,slot=1	
-459	复合弩	7	4	1	4	0	ItemAttr_RangedWeapon		2.86	hp=140,feed=1,auto=0,mag=-1,air=0,slot=1	
-460	老式双管霰弹枪	7	3	1	4	0	ItemAttr_RangedWeapon		2.82	hp=200,feed=1,auto=0,mag=0,air=0,slot=1	
-461	简易霰弹枪	6	3	1	4	0	ItemAttr_RangedWeapon		2.25	hp=150,feed=1,auto=0,mag=0,air=0,slot=1	
-462	三管霰弹枪	7	3	1	4	0	ItemAttr_RangedWeapon		3.7	hp=160,feed=1,auto=0,mag=0,air=0,slot=1	
-463	手腕摧毁者	5	3	1	4	0	ItemAttr_RangedWeapon		2.4	hp=120,feed=1,auto=0,mag=0,air=0,slot=0	
-464	打击者霰弹枪	7	3	1	4	0	ItemAttr_RangedWeapon		5.2	hp=320,feed=1,auto=0,mag=0,air=0,slot=1	
-465	电磁轨道枪	8	3	1	4	1	ItemAttr_RangedWeapon		5.48	hp=640,feed=1,auto=0,mag=0,air=0,slot=1	
-466	采矿激光器	8	3	1	4	1	ItemAttr_RangedWeapon		6.2	hp=2400,feed=2,auto=1,mag=86,air=0,slot=1	
-467	特斯拉枪	8	3	1	4	1	ItemAttr_RangedWeapon		6.2	hp=2400,feed=2,auto=1,mag=86,air=0,slot=1	
-468	M2火焰喷射器	8	4	1	4	0	ItemAttr_RangedWeapon		19.5	hp=16000,feed=3,auto=1,mag=86,air=0,slot=1	
-469	高压喷水枪	8	4	1	4	0	ItemAttr_RangedWeapon		16.5	hp=16000,feed=3,auto=1,mag=86,air=0,slot=1	
-470	自制霰弹发射器	7	3	1	4	1	ItemAttr_RangedWeapon		2.12	hp=80,feed=1,auto=0,mag=0,air=0,slot=1	
-471	自制5.56发射器	7	3	1	4	1	ItemAttr_RangedWeapon		2.35	hp=200,feed=1,auto=0,mag=0,air=0,slot=1	
-472	自制7.62发射器	6	3	1	4	1	ItemAttr_RangedWeapon		2.2	hp=200,feed=1,auto=0,mag=0,air=0,slot=1	
-473	自制马格南发射器	8	3	1	4	1	ItemAttr_RangedWeapon		2.2	hp=100,feed=1,auto=0,mag=0,air=0,slot=1	
-474	自制9mm发射器	5	2	1	4	1	ItemAttr_RangedWeapon		2.15	hp=240,feed=1,auto=0,mag=0,air=0,slot=1	
-475	自制.22发射器	5	2	1	4	1	ItemAttr_RangedWeapon		2.24	hp=270,feed=1,auto=0,mag=0,air=0,slot=1	
-476	自制5.56手枪	6	3	1	4	1	ItemAttr_RangedWeapon		2.125	hp=160,feed=1,auto=0,mag=0,air=0,slot=0	
-477	自制7.62手枪	5	3	1	4	1	ItemAttr_RangedWeapon		2.15	hp=120,feed=1,auto=0,mag=0,air=0,slot=0	
-480	M230重机枪	16	4	1	4	1	ItemAttr_RangedWeapon		120.0	hp=20000,feed=0,auto=0,mag=701,air=0,slot=1	
-481	高能激光炮	16	4	1	4	1	ItemAttr_RangedWeapon		140.0	hp=1000000,feed=0,auto=0,mag=701,air=0,slot=1	
-482	瞬发激光炮	16	4	1	4	1	ItemAttr_RangedWeapon		140.0	hp=1000000,feed=0,auto=0,mag=701,air=0,slot=1	
-483	84mm无后坐力炮	9	3	1	4	1	ItemAttr_RangedWeapon		9.5	hp=300,feed=1,auto=0,mag=0,air=0,slot=1	
-485	中国湖40mm榴弹发射器	7	3	1	4	0	ItemAttr_RangedWeapon		2.8	hp=60,feed=1,auto=0,mag=0,air=0,slot=1	
-486	自制双管榴弹发射器	7	3	1	4	1	ItemAttr_RangedWeapon		3.2	hp=88,feed=1,auto=0,mag=0,air=0,slot=1	
-487	米尔科姆转轮连发式榴弹发射器	7	3	1	4	0	ItemAttr_RangedWeapon		3.2	hp=90,feed=1,auto=0,mag=0,air=0,slot=1	
-488	重型全自动榴弹发射器	8	4	1	4	0	ItemAttr_RangedWeapon		16.0	hp=400,feed=1,auto=1,mag=0,air=0,slot=1	
-489	白隼战术霰弹枪	5	2	1	4	1	ItemAttr_RangedWeapon		3.2	hp=320,feed=1,auto=0,mag=0,air=0,slot=1	
-490	气动复合弩	7	4	1	4	0	ItemAttr_RangedWeapon		3.22	hp=100,feed=1,auto=0,mag=-1,air=14,slot=1	
-491	.25气动手枪	3	2	1	4	0	ItemAttr_RangedWeapon		1.56	hp=240,feed=1,auto=0,mag=0,air=28,slot=0	
-492	气动机械弩	7	4	1	4	1	ItemAttr_RangedWeapon		3.22	hp=150,feed=1,auto=0,mag=-1,air=20,slot=1	
-493	.25高压气步枪	7	3	1	4	0	ItemAttr_RangedWeapon		2.2	hp=250,feed=1,auto=0,mag=0,air=33,slot=1	
-494	阿特曼M2R气步枪	7	3	1	4	0	ItemAttr_RangedWeapon		2.45	hp=350,feed=1,auto=0,mag=0,air=35,slot=1	
-495	.50龙爪气步枪	7	3	1	4	0	ItemAttr_RangedWeapon		2.45	hp=350,feed=1,auto=0,mag=0,air=35,slot=1	
-496	.50高压气步枪	7	3	1	4	0	ItemAttr_RangedWeapon		2.5	hp=210,feed=1,auto=0,mag=0,air=32,slot=1	
-497	.25折膛气步枪	7	3	1	4	0	ItemAttr_RangedWeapon		2.05	hp=180,feed=1,auto=0,mag=0,air=0,slot=1	
-498	.50高压气手枪	4	2	1	4	0	ItemAttr_RangedWeapon		2.25	hp=160,feed=1,auto=0,mag=0,air=28,slot=0	
-499	守卫者60mm榴弹炮	12	4	1	4	1	ItemAttr_RangedWeapon		7.5	hp=300,feed=1,auto=0,mag=0,air=0,slot=1	
+400	雷明顿870霰弹枪	8	3	1	4	0	ItemAttr_RangedWeapon		3.2	hp=120,feed=1,auto=0,mag=0,air=0,slot=1,cap=4,wt=0	
+401	乌兹冲锋枪	6	3	1	4	0	ItemAttr_RangedWeapon		2.7	hp=400,feed=0,auto=1,mag=700,air=0,slot=1,cap=30,wt=2	
+402	MP5-K 冲锋枪	6	3	1	4	0	ItemAttr_RangedWeapon		2.1	hp=600,feed=0,auto=1,mag=702,air=0,slot=1,cap=30,wt=2	
+403	AR-15 突击步枪	10	4	1	4	0	ItemAttr_RangedWeapon		2.94	hp=400,feed=0,auto=1,mag=703,air=0,slot=1,cap=30,wt=2	
+404	ARX100 突击步枪	8	4	1	4	0	ItemAttr_RangedWeapon		3.08	hp=500,feed=0,auto=1,mag=704,air=0,slot=1,cap=25,wt=2	
+405	格洛克17	3	2	1	4	0	ItemAttr_RangedWeapon		0.8	hp=320,feed=0,auto=0,mag=705,air=0,slot=0,cap=17,wt=1	
+406	史密斯伟森 929 转轮手枪	3	2	1	4	0	ItemAttr_RangedWeapon		1.24	hp=360,feed=1,auto=0,mag=0,air=0,slot=0,cap=8,wt=7	
+407	鲁格10/22	6	3	1	4	0	ItemAttr_RangedWeapon		2.3	hp=600,feed=0,auto=0,mag=706,air=0,slot=1,cap=10,wt=2	
+408	KRISS Vector 卡宾枪	6	3	1	4	0	ItemAttr_RangedWeapon		2.7	hp=800,feed=0,auto=1,mag=707,air=0,slot=1,cap=15,wt=2	
+409	柯尔特 M1911-9mm	3	2	1	4	0	ItemAttr_RangedWeapon		0.7	hp=320,feed=0,auto=0,mag=705,air=0,slot=0,cap=17,wt=1	
+410	寻路者 .22转轮手枪	2	2	1	4	0	ItemAttr_RangedWeapon		0.92	hp=240,feed=1,auto=0,mag=0,air=0,slot=0,cap=6,wt=7	
+411	鲁格 GP100 .22	3	2	1	4	0	ItemAttr_RangedWeapon		1.28	hp=260,feed=1,auto=0,mag=0,air=0,slot=0,cap=10,wt=7	
+412	鲁格 MK IV	3	2	1	4	0	ItemAttr_RangedWeapon		0.99	hp=400,feed=0,auto=0,mag=710,air=0,slot=0,cap=12,wt=1	
+413	2011 Combat Master	3	2	1	4	0	ItemAttr_RangedWeapon		1.05	hp=420,feed=0,auto=0,mag=705,air=0,slot=0,cap=17,wt=1	
+414	格洛克18(全自动)	3	2	1	4	0	ItemAttr_RangedWeapon		0.92	hp=480,feed=0,auto=1,mag=700,air=0,slot=0,cap=30,wt=1	
+415	VSS微声步枪	8	4	1	4	0	ItemAttr_RangedWeapon		2.1	hp=700,feed=0,auto=1,mag=750,air=0,slot=1,cap=30,wt=2	
+416	B&T MP9	5	3	1	4	0	ItemAttr_RangedWeapon		1.45	hp=600,feed=0,auto=1,mag=700,air=0,slot=1,cap=30,wt=1	
+417	美洲180 (改装版)	8	3	1	4	0	ItemAttr_RangedWeapon		3.2	hp=800,feed=0,auto=1,mag=711,air=0,slot=1,cap=110,wt=2	
+418	MAC-11/9	4	3	1	4	0	ItemAttr_RangedWeapon		1.59	hp=800,feed=0,auto=1,mag=700,air=0,slot=0,cap=30,wt=1	
+419	柯尔特 M1911	3	2	1	4	0	ItemAttr_RangedWeapon		0.7	hp=300,feed=0,auto=0,mag=720,air=0,slot=0,cap=8,wt=1	
+420	塔沃尔 SAR 突击步枪	7	3	1	4	0	ItemAttr_RangedWeapon		3.18	hp=400,feed=0,auto=1,mag=704,air=0,slot=1,cap=25,wt=2	
+421	M249 通用机枪	9	4	1	4	0	ItemAttr_RangedWeapon		7.12	hp=1200,feed=0,auto=1,mag=741,air=0,slot=1,cap=200,wt=2	
+422	格洛克21C(全自动)	3	2	1	4	0	ItemAttr_RangedWeapon		0.8	hp=480,feed=0,auto=1,mag=722,air=0,slot=0,cap=26,wt=1	
+423	M3 冲锋枪	6	3	1	4	0	ItemAttr_RangedWeapon		3.1	hp=600,feed=0,auto=1,mag=722,air=0,slot=1,cap=26,wt=2	
+424	汤普森冲锋枪	7	3	1	4	0	ItemAttr_RangedWeapon		3.47	hp=500,feed=0,auto=1,mag=723,air=0,slot=1,cap=50,wt=2	
+430	AK47 突击步枪	7	3	1	4	0	ItemAttr_RangedWeapon		3.47	hp=520,feed=0,auto=1,mag=750,air=0,slot=1,cap=30,wt=2	
+431	鲁格M77	7	3	1	4	0	ItemAttr_RangedWeapon		3.06	hp=220,feed=1,auto=0,mag=0,air=0,slot=1,cap=4,wt=2	
+432	MK47步枪	7	3	1	4	0	ItemAttr_RangedWeapon		3.2	hp=360,feed=0,auto=0,mag=750,air=0,slot=1,cap=30,wt=2	
+433	RPK 轻机枪	9	4	1	4	0	ItemAttr_RangedWeapon		4.85	hp=1200,feed=0,auto=1,mag=752,air=0,slot=1,cap=75,wt=2	
+434	德利尔卡宾枪	7	3	1	4	0	ItemAttr_RangedWeapon		3.74	hp=400,feed=0,auto=0,mag=721,air=0,slot=1,cap=15,wt=2	
+440	鲁格.300马格南栓动步枪	8	3	1	4	0	ItemAttr_RangedWeapon		2.7	hp=120,feed=0,auto=0,mag=760,air=0,slot=1,cap=5,wt=2	
+441	温彻斯特70型步枪	8	3	1	4	0	ItemAttr_RangedWeapon		2.82	hp=140,feed=1,auto=0,mag=0,air=0,slot=1,cap=5,wt=2	
+445	GM6山猫反器材步枪	9	3	1	4	0	ItemAttr_RangedWeapon		12.9	hp=100,feed=0,auto=0,mag=770,air=0,slot=1,cap=5,wt=2	
+446	.50BMG 手腕摧毁者	6	3	1	4	0	ItemAttr_RangedWeapon		8.8	hp=60,feed=1,auto=0,mag=0,air=0,slot=0,cap=1,wt=1	
+447	25mm信号枪	3	2	1	4	0	ItemAttr_RangedWeapon		0.52	hp=100,feed=1,auto=0,mag=0,air=0,slot=0,cap=1,wt=7	
+450	复合弓	3	6	1	4	0	ItemAttr_RangedWeapon		2.2	hp=240,feed=0,auto=0,mag=-1,air=0,slot=1,cap=1,wt=3	
+451	木制弓	3	6	1	4	0	ItemAttr_RangedWeapon		2.4	hp=160,feed=0,auto=0,mag=-1,air=0,slot=1,cap=1,wt=3	
+455	木制十字弩	6	4	1	4	0	ItemAttr_RangedWeapon		2.45	hp=50,feed=1,auto=0,mag=-1,air=0,slot=1,cap=1,wt=4	
+456	铁质十字弩	6	4	1	4	0	ItemAttr_RangedWeapon		3.25	hp=120,feed=1,auto=0,mag=-1,air=0,slot=1,cap=1,wt=4	
+457	木制手弩	5	3	1	4	0	ItemAttr_RangedWeapon		1.65	hp=50,feed=1,auto=0,mag=-1,air=0,slot=0,cap=1,wt=4	
+458	机械十字弩	7	4	1	4	0	ItemAttr_RangedWeapon		3.6	hp=160,feed=1,auto=0,mag=-1,air=0,slot=1,cap=5,wt=4	
+459	复合弩	7	4	1	4	0	ItemAttr_RangedWeapon		2.86	hp=140,feed=1,auto=0,mag=-1,air=0,slot=1,cap=1,wt=4	
+460	老式双管霰弹枪	7	3	1	4	0	ItemAttr_RangedWeapon		2.82	hp=200,feed=1,auto=0,mag=0,air=0,slot=1,cap=2,wt=0	
+461	简易霰弹枪	6	3	1	4	0	ItemAttr_RangedWeapon		2.25	hp=150,feed=1,auto=0,mag=0,air=0,slot=1,cap=1,wt=0	
+462	三管霰弹枪	7	3	1	4	0	ItemAttr_RangedWeapon		3.7	hp=160,feed=1,auto=0,mag=0,air=0,slot=1,cap=3,wt=0	
+463	手腕摧毁者	5	3	1	4	0	ItemAttr_RangedWeapon		2.4	hp=120,feed=1,auto=0,mag=0,air=0,slot=0,cap=2,wt=0	
+464	打击者霰弹枪	7	3	1	4	0	ItemAttr_RangedWeapon		5.2	hp=320,feed=1,auto=0,mag=0,air=0,slot=1,cap=12,wt=0	
+465	电磁轨道枪	8	3	1	4	1	ItemAttr_RangedWeapon		5.48	hp=640,feed=1,auto=0,mag=0,air=0,slot=1,cap=10,wt=6	
+466	采矿激光器	8	3	1	4	1	ItemAttr_RangedWeapon		6.2	hp=2400,feed=2,auto=1,mag=86,air=0,slot=1,cap=60,wt=5	
+467	特斯拉枪	8	3	1	4	1	ItemAttr_RangedWeapon		6.2	hp=2400,feed=2,auto=1,mag=86,air=0,slot=1,cap=60,wt=5	
+468	M2火焰喷射器	8	4	1	4	0	ItemAttr_RangedWeapon		19.5	hp=16000,feed=3,auto=1,mag=86,air=0,slot=1,cap=60,wt=8	
+469	高压喷水枪	8	4	1	4	0	ItemAttr_RangedWeapon		16.5	hp=16000,feed=3,auto=1,mag=86,air=0,slot=1,cap=60,wt=8	
+470	自制霰弹发射器	7	3	1	4	1	ItemAttr_RangedWeapon		2.12	hp=80,feed=1,auto=0,mag=0,air=0,slot=1,cap=1,wt=0	
+471	自制5.56发射器	7	3	1	4	1	ItemAttr_RangedWeapon		2.35	hp=200,feed=1,auto=0,mag=0,air=0,slot=1,cap=1,wt=0	
+472	自制7.62发射器	6	3	1	4	1	ItemAttr_RangedWeapon		2.2	hp=200,feed=1,auto=0,mag=0,air=0,slot=1,cap=1,wt=0	
+473	自制马格南发射器	8	3	1	4	1	ItemAttr_RangedWeapon		2.2	hp=100,feed=1,auto=0,mag=0,air=0,slot=1,cap=1,wt=0	
+474	自制9mm发射器	5	2	1	4	1	ItemAttr_RangedWeapon		2.15	hp=240,feed=1,auto=0,mag=0,air=0,slot=1,cap=2,wt=0	
+475	自制.22发射器	5	2	1	4	1	ItemAttr_RangedWeapon		2.24	hp=270,feed=1,auto=0,mag=0,air=0,slot=1,cap=2,wt=0	
+476	自制5.56手枪	6	3	1	4	1	ItemAttr_RangedWeapon		2.125	hp=160,feed=1,auto=0,mag=0,air=0,slot=0,cap=2,wt=1	
+477	自制7.62手枪	5	3	1	4	1	ItemAttr_RangedWeapon		2.15	hp=120,feed=1,auto=0,mag=0,air=0,slot=0,cap=3,wt=1	
+480	M230重机枪	16	4	1	4	1	ItemAttr_RangedWeapon		120.0	hp=20000,feed=0,auto=0,mag=701,air=0,slot=1,cap=60,wt=2	
+481	高能激光炮	16	4	1	4	1	ItemAttr_RangedWeapon		140.0	hp=1000000,feed=0,auto=0,mag=701,air=0,slot=1,cap=60,wt=5	
+482	瞬发激光炮	16	4	1	4	1	ItemAttr_RangedWeapon		140.0	hp=1000000,feed=0,auto=0,mag=701,air=0,slot=1,cap=60,wt=5	
+483	84mm无后坐力炮	9	3	1	4	1	ItemAttr_RangedWeapon		9.5	hp=300,feed=1,auto=0,mag=0,air=0,slot=1,cap=1,wt=0	
+485	中国湖40mm榴弹发射器	7	3	1	4	0	ItemAttr_RangedWeapon		2.8	hp=60,feed=1,auto=0,mag=0,air=0,slot=1,cap=3,wt=0	
+486	自制双管榴弹发射器	7	3	1	4	1	ItemAttr_RangedWeapon		3.2	hp=88,feed=1,auto=0,mag=0,air=0,slot=1,cap=2,wt=0	
+487	米尔科姆转轮连发式榴弹发射器	7	3	1	4	0	ItemAttr_RangedWeapon		3.2	hp=90,feed=1,auto=0,mag=0,air=0,slot=1,cap=6,wt=0	
+488	重型全自动榴弹发射器	8	4	1	4	0	ItemAttr_RangedWeapon		16.0	hp=400,feed=1,auto=1,mag=0,air=0,slot=1,cap=30,wt=0	
+489	白隼战术霰弹枪	5	2	1	4	1	ItemAttr_RangedWeapon		3.2	hp=320,feed=1,auto=0,mag=0,air=0,slot=1,cap=12,wt=0	
+490	气动复合弩	7	4	1	4	0	ItemAttr_RangedWeapon		3.22	hp=100,feed=1,auto=0,mag=-1,air=14,slot=1,cap=1,wt=4	
+491	.25气动手枪	3	2	1	4	0	ItemAttr_RangedWeapon		1.56	hp=240,feed=1,auto=0,mag=0,air=28,slot=0,cap=6,wt=0	
+492	气动机械弩	7	4	1	4	1	ItemAttr_RangedWeapon		3.22	hp=150,feed=1,auto=0,mag=-1,air=20,slot=1,cap=6,wt=4	
+493	.25高压气步枪	7	3	1	4	0	ItemAttr_RangedWeapon		2.2	hp=250,feed=1,auto=0,mag=0,air=33,slot=1,cap=10,wt=0	
+494	阿特曼M2R气步枪	7	3	1	4	0	ItemAttr_RangedWeapon		2.45	hp=350,feed=1,auto=0,mag=0,air=35,slot=1,cap=5,wt=0	
+495	.50龙爪气步枪	7	3	1	4	0	ItemAttr_RangedWeapon		2.45	hp=350,feed=1,auto=0,mag=0,air=35,slot=1,cap=5,wt=0	
+496	.50高压气步枪	7	3	1	4	0	ItemAttr_RangedWeapon		2.5	hp=210,feed=1,auto=0,mag=0,air=32,slot=1,cap=7,wt=0	
+497	.25折膛气步枪	7	3	1	4	0	ItemAttr_RangedWeapon		2.05	hp=180,feed=1,auto=0,mag=0,air=0,slot=1,cap=1,wt=0	
+498	.50高压气手枪	4	2	1	4	0	ItemAttr_RangedWeapon		2.25	hp=160,feed=1,auto=0,mag=0,air=28,slot=0,cap=6,wt=0	
+499	守卫者60mm榴弹炮	12	4	1	4	1	ItemAttr_RangedWeapon		7.5	hp=300,feed=1,auto=0,mag=0,air=0,slot=1,cap=1,wt=0	
 500	普通背包	6	8	1	7	0	ItemAttr_Backpack	10x14	1.2		
 501	探险背包	8	10	1	7	0	ItemAttr_Backpack	10x18	1.6		
 502	登山背包	10	12	1	7	0	ItemAttr_Backpack	13x22	1.6		

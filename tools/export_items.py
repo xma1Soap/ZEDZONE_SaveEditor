@@ -128,7 +128,7 @@ def extras(cls, f):
     if cls == 'ItemAttr_RangedWeapon':
         air = sum(f['airPressureConfig'].values()) if f.get('isAirPowerd') else 0
         return (f"hp={num(f['hp'])},feed={f['feedingType']},auto={1 if f['gunActionType'] == 0 else 0},"
-                f"mag={f['defaultMagazineId']},air={num(float(air))},slot={f['weaponSlotSize']}")
+                f"mag={f['defaultMagazineId']},air={num(float(air))},slot={f['weaponSlotSize']},cap={f['magazineSize']},wt={f['weaponType']}")
     if cls == 'ItemAttr_Magazine':
         return f"cap={f['magazineSize']}"
     if cls == 'ItemAttr_GunPart':

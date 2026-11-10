@@ -54,7 +54,7 @@ namespace ZedZoneSaveEditor
         private bool _switchingSelection;
         private bool _snapshotMode;
 
-        private const string AppTitle = "隔离区 ZED ZONE 人物存档修改器 v1.3";
+        private const string AppTitle = "隔离区 ZED ZONE 人物存档修改器 v1.4";
 
         public MainForm()
         {
@@ -686,6 +686,7 @@ namespace ZedZoneSaveEditor
             _rightTabs.SelectedIndex = Math.Min(rightTab, 1);
             Application.DoEvents();
             if (rightTab == 1) { _invPanel.PreviewSelect(4); Application.DoEvents(); }
+            if (rightTab == 3) { _invPanel.PreviewSelectState(); Application.DoEvents(); }
             if (rightTab == 2) { _invPanel.PreviewEquip(3, 0, equipDlg); Application.DoEvents(); }
             using (var bmp = new Bitmap(Width, Height))
             {
@@ -716,7 +717,12 @@ namespace ZedZoneSaveEditor
             }
             var log = new System.Text.StringBuilder();
             int fails = 0;
-            void Check(bool ok, string what) { if (!ok) fails++; log.AppendLine((ok ? "[通过] " : "[失败] ") + what); }
+            void Check(bool ok, string what)
+            {
+                if (what.StartsWith("（提示）")) { log.AppendLine("        " + what); return; }
+                if (!ok) fails++;
+                log.AppendLine((ok ? "[通过] " : "[失败] ") + what);
+            }
             _snapshotMode = true;
             GameFiles.SkipGameCheck = true;
             StartPosition = FormStartPosition.Manual;
@@ -748,6 +754,9 @@ namespace ZedZoneSaveEditor
                 var all = again.Inventory.AllContainers().SelectMany(c => c.box.Items).ToList();
                 var bag = all.Find(x => x.Id == 501 && x.Inventory != null && x.Inventory.GetMsgs(IF.InvItems).Any(m => m.GetInt(IF.ItemId) == 420));
                 Check(bag != null, "新背包和里面的枪都在");
+                Check(all.Any(x => x.Id == 210 && x.StateText == "还能放 3.5 天") && all.Any(x => x.Id == 1101 && x.Prop(0) == 1201 && x.Prop(1) == 500) &&
+                      all.Any(x => x.Id == 420 && Math.Abs(x.Prop(0) - 123) < 0.01) && all.Any(x => x.Id == 706 && x.Prop(1) == 3) &&
+                      all.Any(x => x.Id == 406 && x.Prop(1) == 2), "改的状态（保质期、水壶净水 500、枪况 123、弹匣 3 发、左轮 2 发）都保存了");
                 Check(again.Inventory.WornBackpack?.Id == 515 && again.Inventory.Main.Items.Any(x => x.Id == 503), "换上的新背包、放在里面的旧背包都保存了");
                 var b14 = again.Inventory.Cd.GetBytes(CharacterInventory.CdInventory);
                 var bBag = again.Inventory.WornBackpack?.Msg.GetBytes(IF.Inventory);

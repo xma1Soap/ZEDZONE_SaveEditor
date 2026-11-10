@@ -43,6 +43,52 @@ namespace ZedZoneSaveEditor
         public List<float> Props => Msg.GetFloatList(IF.Props);
         public void SetProps(IList<float> p) => Msg.SetFloatList(IF.Props, p);
 
+        /// <summary>properties 第 i 项（没有就是 0）。</summary>
+        public float Prop(int i)
+        {
+            var p = Props;
+            return i < p.Count ? p[i] : 0f;
+        }
+
+        /// <summary>改 properties 第 i 项；不够长就补 0（至少补到 minLen 项）。</summary>
+        public void SetProp(int i, float v, int minLen = 0)
+        {
+            var p = Props;
+            while (p.Count <= i || p.Count < minLen) p.Add(0f);
+            p[i] = v;
+            SetProps(p);
+        }
+
+        public float WorldTime => _worldTime;
+
+        /// <summary>
+        /// 食物还能放几天：照游戏 ItemData.GetFoodRemainingDays = 保质期 - (现在 - 生产时间)。
+        /// properties 不到 3 项时游戏按生产时间 0 算。
+        /// </summary>
+        public float FoodDaysLeft
+        {
+            get
+            {
+                var p = Props;
+                float produce = p.Count >= 3 ? p[0] : 0f;
+                return produce + Info.ExtraFloat("perish") - _worldTime;
+            }
+        }
+
+        /// <summary>弓、弩（装的是箭，不是子弹/弹匣）。</summary>
+        public bool IsBow => Info.ExtraInt("wt", -1) == 3 || Info.ExtraInt("wt", -1) == 4;
+
+        /// <summary>弹匣枪上插着的弹匣（没插、或者不是弹匣枪返回 null）。</summary>
+        public ItemInfo LoadedMagazine
+        {
+            get
+            {
+                if (Info.Kind != ItemKind.RangedWeapon || Info.ExtraInt("feed", -1) != 0 || IsBow || Prop(1) <= 0) return null;
+                var mag = ItemDb.Get((int)Prop(1));
+                return mag.Kind == ItemKind.Magazine ? mag : null;
+            }
+        }
+
         public int X { get { var c = Msg.GetLongList(IF.Coor); return c.Count > 0 ? (int)c[0] : 0; } }
         public int Y { get { var c = Msg.GetLongList(IF.Coor); return c.Count > 1 ? (int)c[1] : 0; } }
         public bool Rotated => Msg.GetBool(IF.Rotate);
@@ -82,8 +128,11 @@ namespace ZedZoneSaveEditor
                     {
                         string s = $"枪况 {P(0):0}/{info.ExtraFloat("hp"):0}";
                         int feed = info.ExtraInt("feed", -1);
-                        if (feed == 0) s += P(1) > 0 ? "，带弹匣" : "，没弹匣";
-                        else if (feed == 1) s += $"，子弹 {P(1):0}";
+                        // 弹匣枪 properties：[1] 插着的弹匣编号（≤0 没插）[2] 弹匣耐久 [3] 弹匣里的子弹（ItemAttr_RangedWeapon.SwapMagazineIntoWeapon）
+                        var mag = LoadedMagazine;
+                        if (mag != null) s += $"，弹匣 {P(3):0}/{mag.ExtraInt("cap")}";
+                        else if (feed == 0 && !IsBow) s += P(1) > 0 ? "，带弹匣" : "，没弹匣";
+                        else if (feed == 1 && !IsBow) s += $"，子弹 {P(1):0}/{info.ExtraInt("cap")}";
                         int parts = 0;
                         for (int i = 8; i <= 12; i += 2) if (P(i) > 0) parts++;
                         if (parts > 0) s += $"，配件 {parts} 个";
@@ -95,9 +144,8 @@ namespace ZedZoneSaveEditor
                         return $"配件 {P(0):0}/{info.ExtraFloat("dur"):0}";
                     case ItemKind.Food:
                     {
-                        float perish = info.ExtraFloat("perish");
-                        if (perish <= 0 || p.Count == 0) return "";
-                        float left = P(0) + perish - _worldTime;
+                        if (info.ExtraFloat("perish") <= 0 || p.Count == 0) return "";
+                        float left = FoodDaysLeft;
                         return left <= 0 ? "已过期" : $"还能放 {left:0.#} 天";
                     }
                     case ItemKind.Container:
@@ -136,6 +184,7 @@ namespace ZedZoneSaveEditor
                 case ItemKind.MeleeWeapon: SetP(0, info.ExtraFloat("hp")); break;
                 case ItemKind.RangedWeapon:
                     SetP(0, info.ExtraFloat("hp"));
+                    if (LoadedMagazine != null) SetP(2, IF.MaxDurability);
                     for (int i = 8; i + 1 < p.Count && i <= 12; i += 2)
                         if (p[i] > 0) SetP(i + 1, ItemDb.Get((int)p[i]).ExtraFloat("dur"));
                     break;
@@ -163,6 +212,23 @@ namespace ZedZoneSaveEditor
                 SetProps(p);
                 changed = true;
             }
+            if (info.Kind == ItemKind.RangedWeapon && !IsBow)
+            {
+                int cap = info.ExtraInt("cap");
+                var mag = LoadedMagazine;
+                if (info.ExtraInt("feed", -1) == 1 && cap > 0 && p.Count > 1 && p[1] < cap)
+                {
+                    p[1] = cap;
+                    SetProps(p);
+                    changed = true;
+                }
+                else if (mag != null && mag.ExtraInt("cap") > 0 && p.Count > 3 && p[3] < mag.ExtraInt("cap"))
+                {
+                    p[3] = mag.ExtraInt("cap");
+                    SetProps(p);
+                    changed = true;
+                }
+            }
             if (info.Kind == ItemKind.Container && p.Count > 1 && p[0] > 0 && p[1] < info.ExtraFloat("cap"))
             {
                 p[1] = info.ExtraFloat("cap");
@@ -170,6 +236,114 @@ namespace ZedZoneSaveEditor
                 changed = true;
             }
             return changed;
+        }
+    }
+
+    /// <summary>「状态」里能改的一项。Choices 不为空 = 下拉选择（值是选项的编号）。</summary>
+    internal sealed class StateField
+    {
+        public string Label;
+        public float Min, Max;
+        public int Decimals;
+        public Func<float> Get;
+        public Action<float> Set;
+        public Func<bool> Enabled;
+        public List<(int id, string name)> Choices;
+    }
+
+    /// <summary>
+    /// 各类物品能改的状态（列表「状态」那一栏）。properties 各位的意思照游戏：
+    /// 近战 [0] 武器状态；枪 [0] 枪况、内置弹仓 [1] 子弹、弹匣枪 [1] 弹匣编号 [2] 弹匣耐久 [3] 弹匣子弹；
+    /// 弹匣 [0] 弹匣状态 [1] 子弹；配件 [0] 状态；食物 [0] 生产时间（游戏天数）；液体容器 [0] 液体编号 [1] 多少。
+    /// </summary>
+    internal static class ItemStates
+    {
+        private static float Clamp(float v, float lo, float hi) => v < lo ? lo : v > hi ? hi : v;
+
+        private static void Num(List<StateField> r, ItemView it, string label, float max, int dec, int index, int minLen = 0)
+        {
+            if (max <= 0) return;
+            r.Add(new StateField
+            {
+                Label = label, Min = 0, Max = max, Decimals = dec,
+                Get = () => Clamp(it.Prop(index), 0, max),
+                Set = v => it.SetProp(index, v, minLen),
+            });
+        }
+
+        public static List<StateField> For(ItemView it)
+        {
+            var r = new List<StateField>();
+            var info = it.Info;
+            switch (info.Kind)
+            {
+                case ItemKind.MeleeWeapon:
+                    Num(r, it, "武器状态", info.ExtraFloat("hp"), 1, 0);
+                    break;
+                case ItemKind.RangedWeapon:
+                {
+                    Num(r, it, "枪况", info.ExtraFloat("hp"), 1, 0);
+                    if (it.IsBow) break;
+                    var mag = it.LoadedMagazine;
+                    if (info.ExtraInt("feed", -1) == 1) Num(r, it, "子弹", info.ExtraInt("cap"), 0, 1);
+                    else if (mag != null)
+                    {
+                        Num(r, it, "弹匣里的子弹", mag.ExtraInt("cap"), 0, 3);
+                        Num(r, it, "弹匣耐久", IF.MaxDurability, 1, 2);
+                    }
+                    break;
+                }
+                case ItemKind.Magazine:
+                    Num(r, it, "子弹", info.ExtraInt("cap"), 0, 1, 2);
+                    Num(r, it, "弹匣状态", IF.MaxDurability, 1, 0, 2);
+                    break;
+                case ItemKind.GunPart:
+                    Num(r, it, "配件状态", info.ExtraFloat("dur"), 1, 0);
+                    break;
+                case ItemKind.Food:
+                {
+                    float perish = info.ExtraFloat("perish");
+                    if (perish <= 0) break;
+                    r.Add(new StateField
+                    {
+                        Label = "还能放（天）", Min = 0, Max = perish, Decimals = 1,
+                        Get = () => Clamp(it.FoodDaysLeft, 0, perish),
+                        Set = v => it.SetProp(0, it.WorldTime - perish + v, 3),   // 生产时间 = 现在 - (保质期 - 还能放)
+                    });
+                    break;
+                }
+                case ItemKind.Container:
+                {
+                    float cap = info.ExtraFloat("cap");
+                    if (cap <= 0) break;
+                    var choices = new List<(int, string)> { (0, "空的") };
+                    choices.AddRange(ItemDb.Addable().Where(l => l.Kind == ItemKind.Liquid).Select(l => (l.Id, l.Name)));
+                    r.Add(new StateField
+                    {
+                        Label = "装的", Choices = choices,
+                        Get = () => it.Prop(0) > 0 ? it.Prop(0) : 0,
+                        Set = v =>
+                        {
+                            if (v <= 0) { it.SetProp(0, 0, 2); it.SetProp(1, 0, 2); return; }
+                            it.SetProp(0, v, 2);
+                            if (it.Prop(1) <= 0) it.SetProp(1, cap, 2);     // 原来是空的：直接装满
+                        },
+                    });
+                    r.Add(new StateField
+                    {
+                        Label = "装了多少", Min = 0, Max = cap, Decimals = 0,
+                        Get = () => Clamp(it.Prop(1), 0, cap),
+                        Set = v =>
+                        {
+                            if (v <= 0) { it.SetProp(0, 0, 2); it.SetProp(1, 0, 2); }   // 倒空 = 什么都不装
+                            else it.SetProp(1, v, 2);
+                        },
+                        Enabled = () => it.Prop(0) > 0,
+                    });
+                    break;
+                }
+            }
+            return r;
         }
     }
 
