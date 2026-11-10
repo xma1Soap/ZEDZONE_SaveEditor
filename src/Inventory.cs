@@ -13,6 +13,7 @@ namespace ZedZoneSaveEditor
         public const int InvId = 1001, InvItems = 1002, InvW = 1003, InvH = 1004, InvFeatureLimit = 1010;
         public const int PairKey = 1, PairValue = 2;
         public const float MaxDurability = 100f;              // ItemData.MAX_ITEM_DURABILITY
+        public const float UnbreakableTimes = 1000f;          // 「几乎不坏」= 上限的这么多倍
         public const int FeatureBattery = 10;                 // ItemFeatureType.Battery
         public const string AirPressureKey = "RangedWeaponAirPressure";
     }
@@ -108,7 +109,68 @@ namespace ZedZoneSaveEditor
             }
         }
 
-        public string DurabilityText => Durability.ToString("0.#", CultureInfo.InvariantCulture);
+        public string DurabilityText => IsUnbreakable ? "不坏" : Durability.ToString("0.#", CultureInfo.InvariantCulture);
+
+        /// <summary>
+        /// 能不能设成「几乎不坏」：会用坏的东西才行。能叠的、食物、液体、弹药、箭、投掷物不算；
+        /// 带电池的东西（电池 10、电池盒 11、耗电 12、车用电池 14）和白隼外骨骼这类（39，游戏用耐久折算电量）也不碰。
+        /// </summary>
+        public bool CanUnbreak
+        {
+            get
+            {
+                var info = Info;
+                if (!info.Known || info.Stackable) return false;
+                switch (info.Kind)
+                {
+                    case ItemKind.Food: case ItemKind.Liquid: case ItemKind.Ammo: case ItemKind.Arrow: case ItemKind.Throwable:
+                        return false;
+                }
+                return !info.Features.Overlaps(NoUnbreakFeatures);
+            }
+        }
+
+        private static readonly int[] NoUnbreakFeatures = { 10, 11, 12, 14, 39 };
+
+        /// <summary>已经是「几乎不坏」（耐久超过 100）。</summary>
+        public bool IsUnbreakable => CanUnbreak && Durability > IF.MaxDurability + 0.5f;
+
+        /// <summary>
+        /// 几乎不坏：耐久设成 100 的 1000 倍；枪的枪况、插着的弹匣耐久、装着的配件耐久，弹匣、配件自己的状态，也设成各自上限的 1000 倍。
+        /// 游戏扣这些值时只在减到 0 时出事（HumanCharacterController.CostItemDurabilityExecute、BasicRangedWeapon.Fire），
+        /// 算效果时按"当前 ÷ 上限"并封顶 1（GetDurabilityFactor、get_durabilityFloat），配件耐久只看是不是大于 0（DegradeFloat），
+        /// 所以超上限只是更耐用，不会更强。近战的「武器状态」游戏不拿来判断坏不坏，只修满。
+        /// </summary>
+        public bool MakeUnbreakable()
+        {
+            if (!CanUnbreak) return false;
+            var info = Info;
+            const float k = IF.UnbreakableTimes;
+            bool changed = false;
+            if (Durability < IF.MaxDurability * k) { Durability = IF.MaxDurability * k; changed = true; }
+            var p = Props;
+            bool pc = false;
+            void Up(int i, float v)
+            {
+                if (i >= p.Count || v <= 0 || p[i] >= v) return;
+                p[i] = v;
+                pc = true;
+            }
+            switch (info.Kind)
+            {
+                case ItemKind.MeleeWeapon: Up(0, info.ExtraFloat("hp")); break;
+                case ItemKind.RangedWeapon:
+                    Up(0, info.ExtraFloat("hp") * k);
+                    if (LoadedMagazine != null) Up(2, IF.MaxDurability * k);
+                    for (int i = 8; i + 1 < p.Count && i <= 12; i += 2)
+                        if (p[i] > 0) Up(i + 1, ItemDb.Get((int)p[i]).ExtraFloat("dur") * k);
+                    break;
+                case ItemKind.Magazine: Up(0, IF.MaxDurability * k); break;
+                case ItemKind.GunPart: Up(0, info.ExtraFloat("dur") * k); break;
+            }
+            if (pc) { SetProps(p); changed = true; }
+            return changed;
+        }
 
         public string PosText => IsEquipped ? Slot : $"({X},{Y}){(Rotated ? " 横放" : "")}";
 
@@ -120,13 +182,14 @@ namespace ZedZoneSaveEditor
                 var info = Info;
                 var p = Props;
                 float P(int i) => i < p.Count ? p[i] : 0f;
+                string Cond(float v, float max) => v > max + 0.5f ? "几乎不坏" : $"{v:0}/{max:0}";
                 switch (info.Kind)
                 {
                     case ItemKind.MeleeWeapon:
                         return $"武器 {P(0):0}/{info.ExtraFloat("hp"):0}";
                     case ItemKind.RangedWeapon:
                     {
-                        string s = $"枪况 {P(0):0}/{info.ExtraFloat("hp"):0}";
+                        string s = "枪况 " + Cond(P(0), info.ExtraFloat("hp"));
                         int feed = info.ExtraInt("feed", -1);
                         // 弹匣枪 properties：[1] 插着的弹匣编号（≤0 没插）[2] 弹匣耐久 [3] 弹匣里的子弹（ItemAttr_RangedWeapon.SwapMagazineIntoWeapon）
                         var mag = LoadedMagazine;
@@ -139,9 +202,9 @@ namespace ZedZoneSaveEditor
                         return s;
                     }
                     case ItemKind.Magazine:
-                        return $"子弹 {P(1):0}/{info.ExtraInt("cap")}，弹匣 {P(0):0}%";
+                        return $"子弹 {P(1):0}/{info.ExtraInt("cap")}，" + (P(0) > IF.MaxDurability + 0.5f ? "弹匣几乎不坏" : $"弹匣 {P(0):0}%");
                     case ItemKind.GunPart:
-                        return $"配件 {P(0):0}/{info.ExtraFloat("dur"):0}";
+                        return "配件 " + Cond(P(0), info.ExtraFloat("dur"));
                     case ItemKind.Food:
                     {
                         if (info.ExtraFloat("perish") <= 0 || p.Count == 0) return "";
@@ -165,7 +228,7 @@ namespace ZedZoneSaveEditor
 
         // ---------- 修改 ----------
 
-        /// <summary>修好：耐久回满；武器、弹匣、配件的状态回满（枪上装的配件一起修）；食物变新鲜。</summary>
+        /// <summary>修好：耐久回满；武器、弹匣、配件的状态回满（枪上装的配件一起修）；食物变新鲜。只往上修，「几乎不坏」的大数不会被压回去。</summary>
         public bool Repair()
         {
             bool changed = false;
@@ -175,7 +238,7 @@ namespace ZedZoneSaveEditor
             bool pc = false;
             void SetP(int i, float v)
             {
-                if (i >= p.Count || v <= 0 || Math.Abs(p[i] - v) < 0.0001f) return;
+                if (i >= p.Count || v <= 0 || p[i] >= v - 0.0001f) return;
                 p[i] = v;
                 pc = true;
             }
@@ -248,6 +311,7 @@ namespace ZedZoneSaveEditor
         public Func<float> Get;
         public Action<float> Set;
         public Func<bool> Enabled;
+        public Func<bool> Over;          // 实际值超过上限（「几乎不坏」），框里只能显示到上限
         public List<(int id, string name)> Choices;
     }
 
@@ -268,6 +332,7 @@ namespace ZedZoneSaveEditor
                 Label = label, Min = 0, Max = max, Decimals = dec,
                 Get = () => Clamp(it.Prop(index), 0, max),
                 Set = v => it.SetProp(index, v, minLen),
+                Over = () => it.Prop(index) > max + 0.5f,
             });
         }
 

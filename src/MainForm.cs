@@ -54,7 +54,7 @@ namespace ZedZoneSaveEditor
         private bool _switchingSelection;
         private bool _snapshotMode;
 
-        private const string AppTitle = "隔离区 ZED ZONE 人物存档修改器 v1.4";
+        private const string AppTitle = "隔离区 ZED ZONE 人物存档修改器 v1.5 测试版";
 
         public MainForm()
         {
@@ -757,6 +757,10 @@ namespace ZedZoneSaveEditor
                 Check(all.Any(x => x.Id == 210 && x.StateText == "还能放 3.5 天") && all.Any(x => x.Id == 1101 && x.Prop(0) == 1201 && x.Prop(1) == 500) &&
                       all.Any(x => x.Id == 420 && Math.Abs(x.Prop(0) - 123) < 0.01) && all.Any(x => x.Id == 706 && x.Prop(1) == 3) &&
                       all.Any(x => x.Id == 406 && x.Prop(1) == 2), "改的状态（保质期、水壶净水 500、枪况 123、弹匣 3 发、左轮 2 发）都保存了");
+                Check(all.Any(x => x.Info.Kind == ItemKind.RangedWeapon && x.Durability > 99999 && x.Prop(0) > x.Info.ExtraFloat("hp") * 999 &&
+                                   x.Prop(2) > 99999 && x.Prop(9) > 999) &&
+                      all.Any(x => x.Info.Kind == ItemKind.GunPart && x.Durability > 99999 && x.Prop(0) > x.Info.ExtraFloat("dur") * 999) &&
+                      all.Any(x => x.Info.Kind == ItemKind.MeleeWeapon && x.Durability > 99999), "几乎不坏的枪（含弹匣、配件）、配件、近战都保存了");
                 Check(again.Inventory.WornBackpack?.Id == 515 && again.Inventory.Main.Items.Any(x => x.Id == 503), "换上的新背包、放在里面的旧背包都保存了");
                 var b14 = again.Inventory.Cd.GetBytes(CharacterInventory.CdInventory);
                 var bBag = again.Inventory.WornBackpack?.Msg.GetBytes(IF.Inventory);

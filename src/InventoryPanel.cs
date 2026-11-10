@@ -25,7 +25,8 @@ namespace ZedZoneSaveEditor
         private readonly NumericUpDown _numDur = new NumericUpDown();
         private readonly Label _lblSel = new Label();
         private readonly Button _btnAdd = new Button(), _btnCopy = new Button(), _btnDel = new Button(),
-            _btnRepair = new Button(), _btnFill = new Button(), _btnAll = new Button(), _btnUnequip = new Button();
+            _btnRepair = new Button(), _btnFill = new Button(), _btnAll = new Button(), _btnUnequip = new Button(), _btnUnbreak = new Button();
+        private readonly Label _lblDurRange = new Label { Text = "（0～100）", AutoSize = true, ForeColor = Color.DimGray, Margin = new Padding(0, 7, 3, 3) };
         private readonly GridView _grid = new GridView();
         private readonly ContextMenuStrip _menu = new ContextMenuStrip();
         private readonly TableLayoutPanel _stateBox = new TableLayoutPanel { AutoSize = true, Dock = DockStyle.Fill, ColumnCount = 2, RowCount = 1, Margin = new Padding(0) };
@@ -33,6 +34,7 @@ namespace ZedZoneSaveEditor
         private readonly FlowLayoutPanel _stateRow = new FlowLayoutPanel { AutoSize = true, Dock = DockStyle.Fill, WrapContents = true, Margin = new Padding(0) };
         private readonly List<(StateField f, Control c)> _stateCtrls = new List<(StateField, Control)>();
         private ItemView _stateItem;
+        private readonly Dictionary<StateField, Label> _stateMaxLbl = new Dictionary<StateField, Label>();
 
         private LoadedSave _save;
         private CharacterInventory _inv;
@@ -105,12 +107,19 @@ namespace ZedZoneSaveEditor
             Btn(bar, _btnDel, "删除", DoDelete);
             Btn(bar, _btnRepair, "修好选中的", DoRepair);
             Btn(bar, _btnFill, "补满选中的", DoFill);
+            Btn(bar, _btnUnbreak, "几乎不坏", DoUnbreak);
             Btn(bar, _btnAll, "全选", SelectAll);
             var tip = new ToolTip();
             tip.SetToolTip(_btnAdd, "从全部物品里搜一种放进当前背包（也可以在右边格子图的空格上点右键「在这里添加」）。");
             tip.SetToolTip(_btnRepair, "耐久回满；武器、弹匣、枪械配件修到全新（枪上装的配件一起修）；食物变成刚做好的。");
             tip.SetToolTip(_btnFill, "能堆叠的东西数量补到上限；弹匣和枪里的子弹装满；水壶之类装满原来装的液体。");
+            tip.SetToolTip(_btnUnbreak, "把选中东西的耐久设成上限的 1000 倍（枪还包括枪况、插着的弹匣和装着的配件），相当于用不坏。\n" +
+                                        "不会变得更强，只是更耐用。进游戏后耐久会显示成很大的数；想改回来，把耐久改回 100 以内。\n" +
+                                        "能叠的东西、食物、弹药、电池和用电的设备、白隼外骨骼这类不改。");
             tip.SetToolTip(_btnUnequip, "把选中的装备卸下来，放进身上背包的空位。");
+            const string durTip = "耐久 0～100。「几乎不坏」的东西这里只显示到 100，改了这个数就变回普通耐久。";
+            tip.SetToolTip(_numDur, durTip);
+            tip.SetToolTip(_lblDurRange, durTip);
             tip.SetToolTip(_btnCopy, "照选中的物品再放一个到空位上。背包的话只复制空背包，里面的东西不复制。");
             right.Controls.Add(bar, 0, 1);
 
@@ -163,7 +172,7 @@ namespace ZedZoneSaveEditor
             _numDur.TextAlign = HorizontalAlignment.Right;
             _numDur.ValueChanged += (s, e) => ApplyEdit(it => it.Durability = (float)_numDur.Value);
             edit.Controls.Add(_numDur);
-            edit.Controls.Add(new Label { Text = "（0～100）", AutoSize = true, ForeColor = Color.DimGray, Margin = new Padding(0, 7, 3, 3) });
+            edit.Controls.Add(_lblDurRange);
             right.Controls.Add(edit, 0, 4);
             // 状态（枪况、保质期、装的液体……），按选中的物品变；左边「状态」两个字，右边各项，换行后对齐
             _stateBox.ColumnStyles.Add(new ColumnStyle(SizeType.AutoSize));
@@ -412,6 +421,7 @@ namespace ZedZoneSaveEditor
                     _numCount.Enabled = info.Stackable || it.Count > 1;
                     _numDur.Value = Clamp((decimal)it.Durability, 0, 100);
                     _numDur.Enabled = true;
+                    _lblDurRange.Text = it.IsUnbreakable ? "（几乎不坏）" : "（0～100）";
                     BuildStateEditors(it);
                 }
                 else
@@ -420,7 +430,7 @@ namespace ZedZoneSaveEditor
                     _numCount.Enabled = false;
                     _numDur.Enabled = false;
                 }
-                if (sel.Count != 1) BuildStateEditors(null);
+                if (sel.Count != 1) { BuildStateEditors(null); _lblDurRange.Text = "（0～100）"; }
                 _grid.SetSelection(sel.Select(x => x.Msg).ToList());
             }
             finally { _updating = false; }
@@ -449,6 +459,7 @@ namespace ZedZoneSaveEditor
             _stateRow.Controls.Clear();
             foreach (var c in old) c.Dispose();
             _stateCtrls.Clear();
+            _stateMaxLbl.Clear();
             _stateItem = it;
             var fields = it == null ? new List<StateField>() : ItemStates.For(it);
             _stateLabel.Visible = fields.Count > 0;
@@ -491,7 +502,11 @@ namespace ZedZoneSaveEditor
                 grp.Controls.Add(c);
                 _stateCtrls.Add((f, c));
                 if (f.Choices == null)
-                    grp.Controls.Add(new Label { Text = "/ " + Fmt(f.Max), AutoSize = true, ForeColor = Color.DimGray, Margin = new Padding(0, 7, 3, 3) });
+                {
+                    var ml = new Label { Text = "/ " + Fmt(f.Max), AutoSize = true, ForeColor = Color.DimGray, Margin = new Padding(0, 7, 3, 3) };
+                    grp.Controls.Add(ml);
+                    _stateMaxLbl[f] = ml;
+                }
                 _stateRow.Controls.Add(grp);
             }
             RefreshStateValues();
@@ -516,6 +531,8 @@ namespace ZedZoneSaveEditor
                         cb.SelectedIndex = idx;
                     }
                     c.Enabled = f.Enabled?.Invoke() ?? true;
+                    if (_stateMaxLbl.TryGetValue(f, out var ml))
+                        ml.Text = "/ " + Fmt(f.Max) + (f.Over?.Invoke() == true ? "（几乎不坏）" : "");
                 }
             }
             finally { _updating = was; }
@@ -575,6 +592,7 @@ namespace ZedZoneSaveEditor
             }
             _btnRepair.Enabled = n > 0;
             _btnFill.Enabled = n > 0;
+            _btnUnbreak.Enabled = n > 0;
             _btnAll.Enabled = has && _list.Items.Count > 0;
             _grid.CanDrag = GridMode;
         }
@@ -608,7 +626,7 @@ namespace ZedZoneSaveEditor
                 if (node != null) _tree.SelectedNode = node;
             }
             var items = Items();
-            var it = items.FirstOrDefault(IsGun) ?? items.FirstOrDefault(x => ItemStates.For(x).Count > 0);
+            var it = items.Where(IsGun).OrderByDescending(x => x.IsUnbreakable).FirstOrDefault() ?? items.FirstOrDefault(x => ItemStates.For(x).Count > 0);
             if (it != null) SelectItems(new[] { it.Msg });
         }
 
@@ -684,6 +702,7 @@ namespace ZedZoneSaveEditor
                     Add("卸下到背包", true, DoUnequip);
                     Add("修好", true, DoRepair);
                     Add("补满", true, DoFill);
+                    Add("几乎不坏", true, DoUnbreak);
                     Add(sel.Count > 1 ? $"删除这 {sel.Count} 件" : "删除", true, DoDelete);
                 }
                 if (_menu.Items.Count > 0) _menu.Show(on, pt);
@@ -705,6 +724,7 @@ namespace ZedZoneSaveEditor
                 Add("复制一个", GridMode && sel.Count == 1, DoCopy);
                 Add("修好", true, DoRepair);
                 Add("补满", true, DoFill);
+                Add("几乎不坏", true, DoUnbreak);
                 Add(sel.Count > 1 ? $"删除这 {sel.Count} 件" : "删除", GridMode, DoDelete);
             }
             if (_menu.Items.Count > 0) _menu.Show(on, pt);
@@ -857,6 +877,18 @@ namespace ZedZoneSaveEditor
             FillList(sel.Select(x => x.Msg).ToList());
             if (n > 0) MarkChanged($"补满了 {n} 件。");
             else Status?.Invoke("选中的东西没有能补的（不能堆叠、已经是满的）。");
+        }
+
+        private void DoUnbreak()
+        {
+            var sel = Selected();
+            int skip = sel.Count(it => !it.CanUnbreak);
+            int n = sel.Count(it => it.MakeUnbreakable());
+            FillList(sel.Select(x => x.Msg).ToList());
+            string why = "能叠的东西、食物、弹药、电池和用电的设备、白隼外骨骼这类不改";
+            if (n > 0) MarkChanged($"{n} 件改成了几乎不坏" + (skip > 0 ? $"；另有 {skip} 件不适用（{why}）。" : "。"));
+            else if (skip == sel.Count) Status?.Invoke($"选中的东西不适用「几乎不坏」（{why}）。");
+            else Status?.Invoke("选中的东西已经是几乎不坏了。");
         }
 
         // ---------- 挪动 ----------
@@ -1315,6 +1347,59 @@ namespace ZedZoneSaveEditor
                     r.Add(("补满：左轮子弹装满", Find(406).Prop(1) == ItemDb.Get(406).ExtraInt("cap")));
                     SelectItems(new[] { Find(406).Msg });
                     SetStateField("子弹", 2);
+                }
+
+                // 8c) 几乎不坏：插着弹匣、装着配件的弹匣枪，近战，配件；外骨骼（耐久当电量用）和能叠的东西不改；修好不会把大数压回去
+                var gunInfo = ItemDb.Addable().FirstOrDefault(x => x.Kind == ItemKind.RangedWeapon && x.Id != 420 && x.ExtraInt("feed", -1) == 0 &&
+                                                                  x.ExtraInt("wt", -1) != 3 && x.ExtraInt("wt", -1) != 4 &&
+                                                                  ItemDb.Get(x.ExtraInt("mag")).Kind == ItemKind.Magazine);
+                var meleeInfo = ItemDb.Addable().FirstOrDefault(x => x.Kind == ItemKind.MeleeWeapon && x.ExtraFloat("hp") > 0 && x.W * x.H <= 6);
+                var partInfo = ItemDb.Addable().FirstOrDefault(x => x.Kind == ItemKind.GunPart && x.ExtraFloat("dur") > 0);
+                var exoInfo = ItemDb.Get(1084);
+                r.Add(("找到测「几乎不坏」用的枪、近战、配件", gunInfo != null && meleeInfo != null && partInfo != null));
+                if (gunInfo != null && meleeInfo != null && partInfo != null)
+                {
+                    foreach (var inf in new[] { gunInfo, meleeInfo, partInfo, exoInfo }) AddItems(inf, 1);
+                    var g = Find(gunInfo.Id);
+                    var m = Find(meleeInfo.Id);
+                    var pt = Find(partInfo.Id);
+                    var exo = Find(exoInfo.Id);
+                    r.Add(("放进去测「几乎不坏」的枪、近战、配件、外骨骼", g != null && m != null && pt != null && exo != null));
+                    if (g != null && m != null && pt != null && exo != null)
+                    {
+                        int gm = gunInfo.ExtraInt("mag");
+                        g.SetProp(1, gm); g.SetProp(2, 40); g.SetProp(3, 0);   // 插上弹匣，弹匣耐久 40
+                        g.SetProp(8, partInfo.Id); g.SetProp(9, 5);            // 装一个配件，配件耐久 5
+                        float exoDur = exo.Durability;
+                        var ammo = CurrentItems().FirstOrDefault(x => x.Info.Stackable);
+                        float ammoDur = ammo?.Durability ?? 0;
+                        var targets = new List<PMsg> { g.Msg, m.Msg, pt.Msg, exo.Msg };
+                        if (ammo != null) targets.Add(ammo.Msg);
+                        SelectItems(targets);
+                        r.Add(("选中后「几乎不坏」按钮能点", _btnUnbreak.Enabled));
+                        _btnUnbreak.PerformClick();
+                        const float K = IF.UnbreakableTimes;
+                        bool Near(float a, float b) => Math.Abs(a - b) < 0.5f;
+                        g = Find(gunInfo.Id); m = Find(meleeInfo.Id); pt = Find(partInfo.Id); exo = Find(exoInfo.Id);
+                        r.Add(("几乎不坏：枪的耐久、枪况、插着的弹匣、装着的配件都是上限的 1000 倍，子弹和弹匣编号不动",
+                               Near(g.Durability, 100 * K) && Near(g.Prop(0), gunInfo.ExtraFloat("hp") * K) && Near(g.Prop(2), 100 * K) &&
+                               Near(g.Prop(9), partInfo.ExtraFloat("dur") * K) && g.Prop(3) == 0 && (int)g.Prop(1) == gm));
+                        r.Add(("几乎不坏：近战耐久放大、武器状态只修满；配件耐久和状态放大",
+                               Near(m.Durability, 100 * K) && Near(m.Prop(0), meleeInfo.ExtraFloat("hp")) &&
+                               Near(pt.Durability, 100 * K) && Near(pt.Prop(0), partInfo.ExtraFloat("dur") * K)));
+                        r.Add(("外骨骼和能叠的东西不改", Near(exo.Durability, exoDur) && !exo.CanUnbreak && (ammo == null || Near(ammo.Durability, ammoDur))));
+                        r.Add(("列表里显示「不坏」「几乎不坏」", g.DurabilityText == "不坏" && g.StateText.StartsWith("枪况 几乎不坏") &&
+                                                                  pt.StateText == "配件 几乎不坏" &&
+                                                                  _list.Items.Cast<ListViewItem>().Any(li => ItemOf(li)?.Msg == g.Msg && li.SubItems[2].Text == "不坏")));
+                        SelectItems(new[] { g.Msg, m.Msg, pt.Msg });
+                        DoRepair();
+                        r.Add(("修好不会把几乎不坏压回去", Near(g.Durability, 100 * K) && Near(g.Prop(0), gunInfo.ExtraFloat("hp") * K) &&
+                                                          Near(g.Prop(2), 100 * K) && Near(pt.Prop(0), partInfo.ExtraFloat("dur") * K)));
+                        SelectItems(new[] { g.Msg });
+                        r.Add(("耐久框旁边、状态的枪况和弹匣耐久旁边都标着几乎不坏", _lblDurRange.Text.Contains("几乎不坏") &&
+                                                                               _stateMaxLbl.Count(x => x.Value.Text.Contains("几乎不坏")) == 2 &&
+                                                                               _stateMaxLbl.Any(x => x.Key.Label == "弹匣里的子弹" && !x.Value.Text.Contains("几乎不坏"))));
+                    }
                 }
             }
 

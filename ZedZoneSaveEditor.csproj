@@ -9,7 +9,7 @@
     <AssemblyName>ZedZoneSaveEditor</AssemblyName>
     <RootNamespace>ZedZoneSaveEditor</RootNamespace>
     <ApplicationManifest>app.manifest</ApplicationManifest>
-    <Version>1.4.0</Version>
+    <Version>1.5.0-test</Version>
     <Product>隔离区人物存档修改器</Product>
     <Description>ZED ZONE 隔离区 单机存档 / 联机角色 人物修改器</Description>
     <GenerateDocumentationFile>false</GenerateDocumentationFile>
