@@ -1,0 +1,12 @@
+# 编译输出
+bin/
+obj/
+*.user
+.vs/
+
+# 打好的压缩包、exe（发布用，不进仓库）
+dist/
+
+# Python
+__pycache__/
+*.pyc

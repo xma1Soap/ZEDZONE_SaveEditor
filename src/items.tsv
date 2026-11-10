@@ -1,0 +1,719 @@
+# 隔离区物品表，由 tools/export_items.py 从游戏资源导出
+# id	name	w	h	stack	type	hidden	class	bag	weight	extra	feat
+0	木材	2	1	100	0	1	ItemAttr		0.05		1
+1	圆木	4	2	1	0	1	ItemAttr		1.0		1
+2	石块	1	1	100	0	0	ItemAttr		0.05		9
+3	铁矿石	1	1	100	0	0	ItemAttr		0.05		9
+4	铜矿石	1	1	100	0	0	ItemAttr		0.05		9
+5	硝石	1	1	100	0	0	ItemAttr		0.05		
+6	炭	2	2	100	0	0	ItemAttr		0.1		8
+7	火药	2	2	100	0	0	ItemAttr		0.1		
+8	铁块	2	2	100	0	1	ItemAttr		0.1		
+9	铜块	2	2	100	0	1	ItemAttr		0.1		
+10	铁管	1	4	100	0	0	ItemAttr		0.25		9
+11	铜管	1	4	100	0	0	ItemAttr		0.25		9
+12	铁丝	1	2	100	0	0	ItemAttr		0.05		9
+13	铜丝	1	2	100	0	0	ItemAttr		0.05		9
+14	铁质金属废料	2	2	100	0	1	ItemAttr		0.2		9
+15	苎麻草	2	2	1	0	1	ItemAttr		0.05		
+16	麻绳	2	2	100	0	0	ItemAttr		0.05		
+17	骨头	3	1	100	0	1	ItemAttr		0.1		
+18	动物筋	2	1	100	0	1	ItemAttr		0.1		
+19	树皮	2	1	100	0	1	ItemAttr		0.05		1
+20	小木棍	1	3	100	0	1	ItemAttr		0.02		1
+21	简易取火工具	1	3	1	0	1	ItemAttr		0.1		1,4
+22	废塑料	2	2	100	0	1	ItemAttr		0.01		1,9
+23	植物纤维	1	2	100	0	1	ItemAttr		0.01		7
+24	废纸板	2	1	100	0	1	ItemAttr		0.01		1
+25	皮毛	3	3	100	0	1	ItemAttr		0.5		
+26	棉花	1	1	100	0	1	ItemAttr		0.01		
+27	钉子	1	1	100	0	1	ItemAttr		0.001		
+28	玻璃	2	2	100	0	1	ItemAttr		0.1		
+29	精密零件	2	2	100	0	0	ItemAttr		0.1		
+30	布	2	1	100	0	0	ItemAttr		0.01		1,7
+31	小号火药包	2	2	10	0	0	ItemAttr		0.1		
+32	大号火药包	2	3	5	0	0	ItemAttr		0.5		
+33	火柴	1	1	1	0	0	ItemAttr		0.01		1,4
+34	塑料材料	2	2	100	0	1	ItemAttr		0.05		1
+35	弹簧	1	2	100	0	1	ItemAttr		0.025		9
+36	脂肪	2	2	100	0	1	ItemAttr		0.1		1
+37	铁制箭头	1	1	100	0	1	ItemAttr		0.025		
+38	硫石	1	1	100	0	0	ItemAttr		0.05		
+39	盐	2	2	100	0	0	ItemAttr		0.05		
+40	密钥	1	1	1	0	1	ItemAttr		0.01		
+41	便携式汽油发电机	4	4	1	0	1	ItemAttr		8.0		
+42	喷水推进引擎	4	6	1	0	1	ItemAttr		16.0		
+43	访问卡片	2	2	1	0	1	ItemAttr		0.01		19
+44	堆肥	2	2	50	0	0	ItemAttr		0.4		27
+46	铜质金属废料	2	2	100	0	1	ItemAttr		0.2		9
+50	开锁器	1	2	1	0	0	ItemAttr		0.01		3
+52	改锥	1	3	1	0	0	ItemAttr		0.01		3
+53	枪械维修工具包	2	2	10	0	0	ItemAttr		0.2		
+54	多功能工具	2	2	1	0	0	ItemAttr		0.25		3,4
+55	车辆维修工具包	4	3	1	0	0	ItemAttr		0.2		
+56	物品维修工具包	2	2	10	0	0	ItemAttr		0.2		
+57	砥石	2	2	10	0	0	ItemAttr		0.15		
+58	燧石	1	1	1	0	0	ItemAttr		0.15		4
+59	金属板材	2	2	100	0	1	ItemAttr		0.05		9
+60	压力传感器	1	1	1	0	1	ItemAttr		0.05		
+61	机械元件	2	2	100	0	1	ItemAttr		0.05		9
+62	粗糙的金属原件	2	2	100	0	1	ItemAttr		0.05		9
+63	轮胎	5	5	1	0	0	ItemAttr		8.8		16,1
+64	合金零件	2	2	10	0	1	ItemAttr		0.05		9
+65	灯泡	2	1	1	0	0	ItemAttr		0.05		15
+66	合金板材	3	2	100	0	1	ItemAttr		0.05		9
+67	高压气罐	3	1	100	0	0	ItemAttr		0.05		9
+68	线团	2	2	100	0	0	ItemAttr		0.01		
+69	缝衣针	2	2	100	0	0	ItemAttr		0.01		
+70	铁质匕首	1	2	1	0	0	ItemAttr		0.1		6,18,9
+71	木制匕首	1	2	1	0	1	ItemAttr		0.05		6,18,1
+72	铜质匕首	1	2	1	0	0	ItemAttr		0.1		6,18,9
+73	神秘匕首-抢鲜体验限定	1	3	1	0	1	ItemAttr		0.1		6,18
+74	神秘匕首-纪念版	1	3	1	0	1	ItemAttr		0.1		6,18
+75	硝酸炸药	2	2	100	0	0	ItemAttr		0.1		
+76	胶水	1	2	100	0	0	ItemAttr		0.1		
+77	补胎液	1	2	100	0	0	ItemAttr		0.1		
+78	罐装喷漆	1	2	1	0	0	ItemAttr		0.125		21
+79	高级罐装喷漆	1	2	1	0	0	ItemAttr		0.125		21
+80	7号电池	1	1	1	0	0	ItemAttr		0.01		10
+81	5号电池	1	1	1	0	0	ItemAttr		0.02		10
+82	2号电池	1	1	1	0	0	ItemAttr		0.04		10
+83	9V电池	1	1	1	0	0	ItemAttr		0.05		10
+84	集成充电电池	2	1	1	0	0	ItemAttr		0.2		10
+85	电瓶	3	2	1	0	0	ItemAttr		0.8		10,14
+86	高功率供电模块	2	2	1	0	0	ItemAttr		0.45		10,14
+90	2号手电筒	2	1	1	0	0	ItemAttr		0.2		11,12,13
+91	9V手电筒	2	1	1	0	0	ItemAttr		0.3		11,12,13
+92	广角手电筒	1	2	1	0	0	ItemAttr		0.25		11,12,13
+93	照明棒(5号电池)	1	2	1	0	0	ItemAttr		0.2		11,12,13
+94	<color=#ff5500>故障的</color>CAS弹道计算机系统	2	2	1	0	1	ItemAttr		0.25		
+95	荧光瓶	1	3	1	0	1	ItemAttr		0.5		13
+96	CAS弹道计算机系统	2	2	1	0	1	ItemAttr		0.25		17
+97	抓钩	2	2	1	0	1	ItemAttr		0.5		17
+98	信件	2	2	1	0	1	ItemAttr		0.0		1
+99	现金	2	2	9999	0	1	ItemAttr		0.0		1
+100	12号霰弹	1	2	12	6	0	ItemAttr_Ammo		0.01	n=12	
+101	9x19mm弹药	1	1	40	6	0	ItemAttr_Ammo		0.005	n=40	
+102	5.56x45弹药	1	2	30	6	0	ItemAttr_Ammo		0.008	n=30	
+103	.22LR 弹药	1	1	60	6	0	ItemAttr_Ammo		0.004	n=60	
+104	7.62x39弹药	1	2	30	6	0	ItemAttr_Ammo		0.008	n=30	
+105	.300马格南 弹药	1	2	16	6	0	ItemAttr_Ammo		0.02	n=16	
+106	.50 BMG 弹药	1	3	10	6	0	ItemAttr_Ammo		0.05	n=10	
+107	.45 ACP 弹药	1	1	30	6	0	ItemAttr_Ammo		0.005	n=40	
+110	金属弹丸	2	2	50	6	1	ItemAttr_Ammo		0.005	n=50	
+111	.25气枪弹	1	1	50	6	1	ItemAttr_Ammo		0.003	n=50	
+112	.50气枪弹	1	2	30	6	1	ItemAttr_Ammo		0.005	n=30	
+120	40mm高爆榴弹	1	2	5	6	0	ItemAttr_Ammo		0.1	n=5	
+121	25mm信号弹	1	2	5	6	0	ItemAttr_Ammo		0.08	n=5	
+122	84mm高爆炮弹	1	3	3	6	1	ItemAttr_Ammo		3.2	n=3	
+123	60mm高爆榴弹	1	2	3	6	1	ItemAttr_Ammo		1.2	n=3	
+150	简易木箭	4	1	10	10	0	ItemAttr_Arrow		0.05		
+151	铁箭矢	4	1	10	10	0	ItemAttr_Arrow		0.02		
+152	爆炸箭头	4	1	10	10	0	ItemAttr_Arrow		0.1		
+200	罐装可乐	1	2	1	1	0	ItemAttr_Food		0.25	perish=90	
+201	红莓	2	2	1	1	0	ItemAttr_Food		0.1	perish=2	
+202	蓝莓	2	2	1	1	0	ItemAttr_Food		0.1	perish=2	
+203	夏枯草	2	2	1	1	1	ItemAttr_Food		0.1	perish=2	
+204	肉	2	2	1	1	1	ItemAttr_Food		0.25	perish=3	5,23
+205	腐肉	2	2	1	1	1	ItemAttr_Food		0.25		5,23,27
+206	罐装纷达	1	2	1	1	0	ItemAttr_Food		0.25	perish=90	
+207	罐装雪霹	1	2	1	1	0	ItemAttr_Food		0.25	perish=90	
+208	辐射果实	1	1	1	1	1	ItemAttr_Food		0.1	perish=100	13
+209	糖块	1	1	1	1	0	ItemAttr_Food		0.1	perish=100	
+210	午餐肉罐头	2	2	1	1	0	ItemAttr_Food		0.3	perish=360	
+211	水果罐头	2	2	1	1	0	ItemAttr_Food		0.4	perish=360	
+212	啤酒	1	2	1	1	0	ItemAttr_Food		0.4	perish=180	
+213	自制肉罐头	2	2	1	1	1	ItemAttr_Food		0.5	perish=360	
+214	自制水果罐头	2	2	1	1	1	ItemAttr_Food		0.25	perish=180	
+215	快乐的姜饼	2	2	1	1	0	ItemAttr_Food		0.125	perish=180	
+216	生气的姜饼	2	2	1	1	0	ItemAttr_Food		0.125	perish=180	
+217	油浸小鱼罐头	2	2	1	1	1	ItemAttr_Food		0.5	perish=300	
+218	金枪鱼罐头	2	2	1	1	1	ItemAttr_Food		0.5	perish=360	
+219	鲑鱼罐头	2	2	1	1	1	ItemAttr_Food		0.5	perish=360	
+220	绷带	1	2	1	1	0	ItemAttr_Food		0.1		7
+221	急救包	2	2	1	1	0	ItemAttr_Food		0.5	perish=360	
+222	止痛药	1	1	1	1	0	ItemAttr_Food		0.05	perish=1000	
+223	血袋	1	1	1	1	0	ItemAttr_Food		0.15	perish=80	
+224	褪黑素	1	1	1	1	0	ItemAttr_Food		0.05	perish=1000	
+225	大马哈鱼罐头	2	2	1	1	1	ItemAttr_Food		0.6	perish=360	
+226	什锦淡水鱼罐头	2	2	1	1	1	ItemAttr_Food		0.5	perish=320	
+227	红焖鲶鱼罐头	2	2	1	1	1	ItemAttr_Food		0.5	perish=360	
+228	蟹肉罐头	2	2	1	1	1	ItemAttr_Food		0.4	perish=360	
+229	甜玉米罐头	2	2	1	1	1	ItemAttr_Food		0.5	perish=360	
+230	椰子	2	2	1	1	0	ItemAttr_Food		0.1	perish=5	
+231	玉米	2	2	1	1	0	ItemAttr_Food		0.1	perish=10	
+232	炖肉罐头	2	2	1	1	1	ItemAttr_Food		0.6	perish=360	
+233	椰肉罐头	2	2	1	1	1	ItemAttr_Food		0.5	perish=300	
+234	退烧药	1	1	1	1	0	ItemAttr_Food		0.05	perish=1000	
+235	萝卜	2	2	1	1	0	ItemAttr_Food		0.1	perish=6	
+236	蘑菇	2	2	1	1	0	ItemAttr_Food		0.1	perish=4	
+237	土豆	2	2	1	1	0	ItemAttr_Food		0.1	perish=12	
+238	番茄	2	2	1	1	0	ItemAttr_Food		0.1	perish=4	
+239	辣椒	2	2	1	1	0	ItemAttr_Food		0.1	perish=8	
+240	干煎肉排	2	2	1	1	1	ItemAttr_Food		0.25	perish=6	
+241	油煎肉排	2	2	1	1	1	ItemAttr_Food		0.25	perish=6	
+242	葵花籽	2	2	1	1	0	ItemAttr_Food		0.1	perish=30	26
+243	烤土豆	2	2	1	1	0	ItemAttr_Food		0.1	perish=6	
+244	炸薯条	2	2	1	1	0	ItemAttr_Food		0.1	perish=4	
+245	番茄酱	2	2	1	1	0	ItemAttr_Food		0.1	perish=20	
+246	番茄罐头	2	2	1	1	0	ItemAttr_Food		0.1	perish=360	
+247	辣椒粉	2	2	1	1	0	ItemAttr_Food		0.1	perish=60	
+248	香辣肉排	2	2	1	1	0	ItemAttr_Food		0.1	perish=3	
+249	孢子抑制剂	2	2	1	1	0	ItemAttr_Food		0.1	perish=90	
+250	红色药剂	1	2	100	1	1	ItemAttr_Food		0.01		
+251	绿色药剂	1	2	100	1	1	ItemAttr_Food		0.01		
+252	蓝色药剂	1	2	100	1	1	ItemAttr_Food		0.01		
+253	小麦	2	2	1	1	0	ItemAttr_Food		0.1	perish=60	
+254	面粉	2	2	1	1	0	ItemAttr_Food		0.1	perish=90	
+255	面包	2	2	1	1	0	ItemAttr_Food		0.1	perish=5	
+256	煎蛋	1	1	1	1	1	ItemAttr_Food		0.12	perish=4	
+257	番茄炒蛋	2	2	1	1	1	ItemAttr_Food		0.32	perish=4	
+258	玉米蛋花汤	2	2	1	1	1	ItemAttr_Food		0.35	perish=4	
+259	鸡蛋饼	2	2	1	1	1	ItemAttr_Food		0.37	perish=6	
+260	死掉的老鼠	2	1	1	1	1	ItemAttr_Food		0.125	perish=3	5,23
+261	死掉的乌鸦	2	1	1	1	1	ItemAttr_Food		0.125	perish=3	5,23
+262	死掉的鱼类	2	1	1	1	1	ItemAttr_Food		0.125	perish=3	5,23
+263	死掉的海鸥	2	1	1	1	1	ItemAttr_Food		0.2	perish=3	5,23
+264	死掉的兔子	2	1	1	1	1	ItemAttr_Food		0.35	perish=3	5,23
+265	蟹腿	3	2	1	1	1	ItemAttr_Food		0.2	perish=3	5,23
+266	死掉的鸡	2	1	1	1	1	ItemAttr_Food		0.3	perish=3	5,23
+267	鸡蛋	1	1	1	1	0	ItemAttr_Food		0.05	perish=8	5
+268	萝卜炖兔肉	2	2	1	1	1	ItemAttr_Food		0.7	perish=5	
+269	莓果馅饼	2	2	1	1	1	ItemAttr_Food		0.5	perish=8	
+270	能量药剂	1	2	1	1	0	ItemAttr_Food		0.1		
+271	健康药剂	1	2	1	1	0	ItemAttr_Food		0.1		
+272	力量增强药剂	1	2	1	1	0	ItemAttr_Food		0.1		
+273	抗毒性药剂	1	2	1	1	0	ItemAttr_Food		0.1		
+274	疾速药剂	1	2	1	1	0	ItemAttr_Food		0.1		
+275	强化药剂	1	3	1	1	0	ItemAttr_Food		0.1		
+276	碘片	1	1	1	1	1	ItemAttr_Food		0.05		
+277	抗辐射药	1	2	1	1	1	ItemAttr_Food		0.1		
+278	乏燃料棒	1	3	10	0	1	ItemAttr		3.5		
+279	鲈鱼	2	1	1	1	1	ItemAttr_Food		0.125	perish=5	5,23
+280	鲑鱼	3	2	1	1	1	ItemAttr_Food		0.125	perish=5	5,23
+281	鲫鱼	2	1	1	1	1	ItemAttr_Food		0.125	perish=5	5,23
+282	鳟鱼	3	2	1	1	1	ItemAttr_Food		0.125	perish=5	5,23
+283	鲤鱼	3	2	1	1	1	ItemAttr_Food		0.125	perish=5	5,23
+284	金枪鱼	5	3	1	1	1	ItemAttr_Food		0.125	perish=5	5,23
+285	大马哈鱼	6	3	1	1	1	ItemAttr_Food		10.0	perish=5	5,23
+286	香煎鲈鱼	2	2	1	1	1	ItemAttr_Food		0.25	perish=8	
+287	清炖鲫鱼汤	2	2	1	1	1	ItemAttr_Food		0.5	perish=6	
+288	糖醋鲤鱼	2	2	1	1	1	ItemAttr_Food		0.4	perish=7	
+289	香烤鲑鱼排	2	2	1	1	1	ItemAttr_Food		0.4	perish=7	
+290	玉米炖鳟鱼	2	2	1	1	1	ItemAttr_Food		0.6	perish=7	
+291	香煎金枪鱼排	2	2	1	1	1	ItemAttr_Food		0.5	perish=8	
+292	大马哈鱼盛宴	2	2	1	1	1	ItemAttr_Food		0.8	perish=10	
+293	椒盐蟹腿	2	2	1	1	1	ItemAttr_Food		0.4	perish=7	
+294	盐烤玉米	2	2	1	1	1	ItemAttr_Food		0.2	perish=12	
+295	什锦莓果酱	2	2	1	1	1	ItemAttr_Food		0.2	perish=30	
+296	盐烤鸡	2	2	1	1	1	ItemAttr_Food		0.35	perish=5	
+297	蘑菇鸡汤	2	2	1	1	1	ItemAttr_Food		0.65	perish=4	
+298	香辣土豆鸡	2	2	1	1	1	ItemAttr_Food		0.52	perish=5	
+299	田园蔬菜汤	2	2	1	1	1	ItemAttr_Food		0.65	perish=4	
+300	撬棍	2	4	1	3	0	ItemAttr_MeleeWeapon		0.8	hp=100	2
+301	丧尸爪	1	1	1	3	1	ItemAttr_MeleeWeapon		0.0	hp=100	
+302	简易斧子	2	5	1	3	0	ItemAttr_MeleeWeapon		1.2	hp=100	2,18
+303	简易锤子	2	5	1	3	0	ItemAttr_MeleeWeapon		1.5	hp=100	2
+304	简易镐	2	5	1	3	0	ItemAttr_MeleeWeapon		1.2	hp=100	2
+305	棍子	1	3	1	3	1	ItemAttr_MeleeWeapon		0.6	hp=100	2,1
+306	铁制斧子	2	6	1	3	0	ItemAttr_MeleeWeapon		1.8	hp=100	2,18
+307	铁制锤子	2	6	1	3	0	ItemAttr_MeleeWeapon		1.8	hp=100	2,18
+308	铁制镐	2	6	1	3	0	ItemAttr_MeleeWeapon		1.8	hp=100	2,18
+309	铁质柴刀	2	6	1	3	0	ItemAttr_MeleeWeapon		1.8	hp=100	2,18
+310	扳手	2	4	1	3	0	ItemAttr_MeleeWeapon		1.2	hp=100	2
+311	工具锤	2	4	1	3	0	ItemAttr_MeleeWeapon		1.2	hp=100	2
+312	消防斧	2	6	1	3	0	ItemAttr_MeleeWeapon		2.2	hp=100	2,18
+313	棒球棍	2	6	1	3	0	ItemAttr_MeleeWeapon		1.5	hp=100	2
+314	铁丝棒球棍	2	6	1	3	0	ItemAttr_MeleeWeapon		1.8	hp=100	2
+315	高尔夫球杆	2	9	1	3	0	ItemAttr_MeleeWeapon		2.1	hp=100	2
+316	砍刀	2	6	1	3	0	ItemAttr_MeleeWeapon		3.0	hp=198	2,18
+317	平底锅	3	5	1	3	0	ItemAttr_MeleeWeapon		3.0	hp=100	2
+318	橡胶警棍	2	6	1	3	0	ItemAttr_MeleeWeapon		1.5	hp=100	
+319	奇怪的橡胶棒	2	6	1	3	0	ItemAttr_MeleeWeapon		1.5	hp=100	
+320	火把	2	5	1	3	1	ItemAttr_MeleeWeapon		0.8	hp=100	2,4
+321	星芒杖	2	8	1	3	0	ItemAttr_MeleeWeapon		1.5	hp=100	
+322	巨大的仙女棒	2	8	1	3	0	ItemAttr_MeleeWeapon		1.5	hp=100	
+323	多功能斧	2	6	1	3	0	ItemAttr_MeleeWeapon		1.9	hp=200	2,18,4
+324	维修锤	2	6	1	3	0	ItemAttr_MeleeWeapon		1.5	hp=100	
+330	武士刀-风	2	8	1	3	0	ItemAttr_MeleeWeapon		0.9	hp=100	18
+331	武士刀-血	2	8	1	3	0	ItemAttr_MeleeWeapon		1.2	hp=100	18
+332	太刀-极	2	10	1	3	0	ItemAttr_MeleeWeapon		2.4	hp=100	18
+350	木制长矛	2	9	1	3	0	ItemAttr_MeleeWeapon		1.8	hp=100	2
+351	金属长矛	2	9	1	3	0	ItemAttr_MeleeWeapon		3.2	hp=100	2
+352	长枪	2	10	1	3	0	ItemAttr_MeleeWeapon		2.4	hp=100	2
+353	海皇戟	2	10	1	3	1	ItemAttr_MeleeWeapon		3.4	hp=200	2
+360	木制钓鱼竿	2	12	1	3	0	ItemAttr_MeleeWeapon		1.2	hp=50	1
+361	金属钓鱼竿	2	12	1	3	0	ItemAttr_MeleeWeapon		1.2	hp=50	1
+370	简易铲子	2	6	1	3	0	ItemAttr_MeleeWeapon		1.2	hp=100	2,18
+371	巨蜥牙刃	2	6	1	3	1	ItemAttr_MeleeWeapon		0.9	hp=300	
+400	雷明顿870霰弹枪	8	3	1	4	0	ItemAttr_RangedWeapon		3.2	hp=120,feed=1,auto=0,mag=0,air=0,slot=1	
+401	乌兹冲锋枪	6	3	1	4	0	ItemAttr_RangedWeapon		2.7	hp=400,feed=0,auto=1,mag=700,air=0,slot=1	
+402	MP5-K 冲锋枪	6	3	1	4	0	ItemAttr_RangedWeapon		2.1	hp=600,feed=0,auto=1,mag=702,air=0,slot=1	
+403	AR-15 突击步枪	10	4	1	4	0	ItemAttr_RangedWeapon		2.94	hp=400,feed=0,auto=1,mag=703,air=0,slot=1	
+404	ARX100 突击步枪	8	4	1	4	0	ItemAttr_RangedWeapon		3.08	hp=500,feed=0,auto=1,mag=704,air=0,slot=1	
+405	格洛克17	3	2	1	4	0	ItemAttr_RangedWeapon		0.8	hp=320,feed=0,auto=0,mag=705,air=0,slot=0	
+406	史密斯伟森 929 转轮手枪	3	2	1	4	0	ItemAttr_RangedWeapon		1.24	hp=360,feed=1,auto=0,mag=0,air=0,slot=0	
+407	鲁格10/22	6	3	1	4	0	ItemAttr_RangedWeapon		2.3	hp=600,feed=0,auto=0,mag=706,air=0,slot=1	
+408	KRISS Vector 卡宾枪	6	3	1	4	0	ItemAttr_RangedWeapon		2.7	hp=800,feed=0,auto=1,mag=707,air=0,slot=1	
+409	柯尔特 M1911-9mm	3	2	1	4	0	ItemAttr_RangedWeapon		0.7	hp=320,feed=0,auto=0,mag=705,air=0,slot=0	
+410	寻路者 .22转轮手枪	2	2	1	4	0	ItemAttr_RangedWeapon		0.92	hp=240,feed=1,auto=0,mag=0,air=0,slot=0	
+411	鲁格 GP100 .22	3	2	1	4	0	ItemAttr_RangedWeapon		1.28	hp=260,feed=1,auto=0,mag=0,air=0,slot=0	
+412	鲁格 MK IV	3	2	1	4	0	ItemAttr_RangedWeapon		0.99	hp=400,feed=0,auto=0,mag=710,air=0,slot=0	
+413	2011 Combat Master	3	2	1	4	0	ItemAttr_RangedWeapon		1.05	hp=420,feed=0,auto=0,mag=705,air=0,slot=0	
+414	格洛克18(全自动)	3	2	1	4	0	ItemAttr_RangedWeapon		0.92	hp=480,feed=0,auto=1,mag=700,air=0,slot=0	
+415	VSS微声步枪	8	4	1	4	0	ItemAttr_RangedWeapon		2.1	hp=700,feed=0,auto=1,mag=750,air=0,slot=1	
+416	B&T MP9	5	3	1	4	0	ItemAttr_RangedWeapon		1.45	hp=600,feed=0,auto=1,mag=700,air=0,slot=1	
+417	美洲180 (改装版)	8	3	1	4	0	ItemAttr_RangedWeapon		3.2	hp=800,feed=0,auto=1,mag=711,air=0,slot=1	
+418	MAC-11/9	4	3	1	4	0	ItemAttr_RangedWeapon		1.59	hp=800,feed=0,auto=1,mag=700,air=0,slot=0	
+419	柯尔特 M1911	3	2	1	4	0	ItemAttr_RangedWeapon		0.7	hp=300,feed=0,auto=0,mag=720,air=0,slot=0	
+420	塔沃尔 SAR 突击步枪	7	3	1	4	0	ItemAttr_RangedWeapon		3.18	hp=400,feed=0,auto=1,mag=704,air=0,slot=1	
+421	M249 通用机枪	9	4	1	4	0	ItemAttr_RangedWeapon		7.12	hp=1200,feed=0,auto=1,mag=741,air=0,slot=1	
+422	格洛克21C(全自动)	3	2	1	4	0	ItemAttr_RangedWeapon		0.8	hp=480,feed=0,auto=1,mag=722,air=0,slot=0	
+423	M3 冲锋枪	6	3	1	4	0	ItemAttr_RangedWeapon		3.1	hp=600,feed=0,auto=1,mag=722,air=0,slot=1	
+424	汤普森冲锋枪	7	3	1	4	0	ItemAttr_RangedWeapon		3.47	hp=500,feed=0,auto=1,mag=723,air=0,slot=1	
+430	AK47 突击步枪	7	3	1	4	0	ItemAttr_RangedWeapon		3.47	hp=520,feed=0,auto=1,mag=750,air=0,slot=1	
+431	鲁格M77	7	3	1	4	0	ItemAttr_RangedWeapon		3.06	hp=220,feed=1,auto=0,mag=0,air=0,slot=1	
+432	MK47步枪	7	3	1	4	0	ItemAttr_RangedWeapon		3.2	hp=360,feed=0,auto=0,mag=750,air=0,slot=1	
+433	RPK 轻机枪	9	4	1	4	0	ItemAttr_RangedWeapon		4.85	hp=1200,feed=0,auto=1,mag=752,air=0,slot=1	
+434	德利尔卡宾枪	7	3	1	4	0	ItemAttr_RangedWeapon		3.74	hp=400,feed=0,auto=0,mag=721,air=0,slot=1	
+440	鲁格.300马格南栓动步枪	8	3	1	4	0	ItemAttr_RangedWeapon		2.7	hp=120,feed=0,auto=0,mag=760,air=0,slot=1	
+441	温彻斯特70型步枪	8	3	1	4	0	ItemAttr_RangedWeapon		2.82	hp=140,feed=1,auto=0,mag=0,air=0,slot=1	
+445	GM6山猫反器材步枪	9	3	1	4	0	ItemAttr_RangedWeapon		12.9	hp=100,feed=0,auto=0,mag=770,air=0,slot=1	
+446	.50BMG 手腕摧毁者	6	3	1	4	0	ItemAttr_RangedWeapon		8.8	hp=60,feed=1,auto=0,mag=0,air=0,slot=0	
+447	25mm信号枪	3	2	1	4	0	ItemAttr_RangedWeapon		0.52	hp=100,feed=1,auto=0,mag=0,air=0,slot=0	
+450	复合弓	3	6	1	4	0	ItemAttr_RangedWeapon		2.2	hp=240,feed=0,auto=0,mag=-1,air=0,slot=1	
+451	木制弓	3	6	1	4	0	ItemAttr_RangedWeapon		2.4	hp=160,feed=0,auto=0,mag=-1,air=0,slot=1	
+455	木制十字弩	6	4	1	4	0	ItemAttr_RangedWeapon		2.45	hp=50,feed=1,auto=0,mag=-1,air=0,slot=1	
+456	铁质十字弩	6	4	1	4	0	ItemAttr_RangedWeapon		3.25	hp=120,feed=1,auto=0,mag=-1,air=0,slot=1	
+457	木制手弩	5	3	1	4	0	ItemAttr_RangedWeapon		1.65	hp=50,feed=1,auto=0,mag=-1,air=0,slot=0	
+458	机械十字弩	7	4	1	4	0	ItemAttr_RangedWeapon		3.6	hp=160,feed=1,auto=0,mag=-1,air=0,slot=1	
+459	复合弩	7	4	1	4	0	ItemAttr_RangedWeapon		2.86	hp=140,feed=1,auto=0,mag=-1,air=0,slot=1	
+460	老式双管霰弹枪	7	3	1	4	0	ItemAttr_RangedWeapon		2.82	hp=200,feed=1,auto=0,mag=0,air=0,slot=1	
+461	简易霰弹枪	6	3	1	4	0	ItemAttr_RangedWeapon		2.25	hp=150,feed=1,auto=0,mag=0,air=0,slot=1	
+462	三管霰弹枪	7	3	1	4	0	ItemAttr_RangedWeapon		3.7	hp=160,feed=1,auto=0,mag=0,air=0,slot=1	
+463	手腕摧毁者	5	3	1	4	0	ItemAttr_RangedWeapon		2.4	hp=120,feed=1,auto=0,mag=0,air=0,slot=0	
+464	打击者霰弹枪	7	3	1	4	0	ItemAttr_RangedWeapon		5.2	hp=320,feed=1,auto=0,mag=0,air=0,slot=1	
+465	电磁轨道枪	8	3	1	4	1	ItemAttr_RangedWeapon		5.48	hp=640,feed=1,auto=0,mag=0,air=0,slot=1	
+466	采矿激光器	8	3	1	4	1	ItemAttr_RangedWeapon		6.2	hp=2400,feed=2,auto=1,mag=86,air=0,slot=1	
+467	特斯拉枪	8	3	1	4	1	ItemAttr_RangedWeapon		6.2	hp=2400,feed=2,auto=1,mag=86,air=0,slot=1	
+468	M2火焰喷射器	8	4	1	4	0	ItemAttr_RangedWeapon		19.5	hp=16000,feed=3,auto=1,mag=86,air=0,slot=1	
+469	高压喷水枪	8	4	1	4	0	ItemAttr_RangedWeapon		16.5	hp=16000,feed=3,auto=1,mag=86,air=0,slot=1	
+470	自制霰弹发射器	7	3	1	4	1	ItemAttr_RangedWeapon		2.12	hp=80,feed=1,auto=0,mag=0,air=0,slot=1	
+471	自制5.56发射器	7	3	1	4	1	ItemAttr_RangedWeapon		2.35	hp=200,feed=1,auto=0,mag=0,air=0,slot=1	
+472	自制7.62发射器	6	3	1	4	1	ItemAttr_RangedWeapon		2.2	hp=200,feed=1,auto=0,mag=0,air=0,slot=1	
+473	自制马格南发射器	8	3	1	4	1	ItemAttr_RangedWeapon		2.2	hp=100,feed=1,auto=0,mag=0,air=0,slot=1	
+474	自制9mm发射器	5	2	1	4	1	ItemAttr_RangedWeapon		2.15	hp=240,feed=1,auto=0,mag=0,air=0,slot=1	
+475	自制.22发射器	5	2	1	4	1	ItemAttr_RangedWeapon		2.24	hp=270,feed=1,auto=0,mag=0,air=0,slot=1	
+476	自制5.56手枪	6	3	1	4	1	ItemAttr_RangedWeapon		2.125	hp=160,feed=1,auto=0,mag=0,air=0,slot=0	
+477	自制7.62手枪	5	3	1	4	1	ItemAttr_RangedWeapon		2.15	hp=120,feed=1,auto=0,mag=0,air=0,slot=0	
+480	M230重机枪	16	4	1	4	1	ItemAttr_RangedWeapon		120.0	hp=20000,feed=0,auto=0,mag=701,air=0,slot=1	
+481	高能激光炮	16	4	1	4	1	ItemAttr_RangedWeapon		140.0	hp=1000000,feed=0,auto=0,mag=701,air=0,slot=1	
+482	瞬发激光炮	16	4	1	4	1	ItemAttr_RangedWeapon		140.0	hp=1000000,feed=0,auto=0,mag=701,air=0,slot=1	
+483	84mm无后坐力炮	9	3	1	4	1	ItemAttr_RangedWeapon		9.5	hp=300,feed=1,auto=0,mag=0,air=0,slot=1	
+485	中国湖40mm榴弹发射器	7	3	1	4	0	ItemAttr_RangedWeapon		2.8	hp=60,feed=1,auto=0,mag=0,air=0,slot=1	
+486	自制双管榴弹发射器	7	3	1	4	1	ItemAttr_RangedWeapon		3.2	hp=88,feed=1,auto=0,mag=0,air=0,slot=1	
+487	米尔科姆转轮连发式榴弹发射器	7	3	1	4	0	ItemAttr_RangedWeapon		3.2	hp=90,feed=1,auto=0,mag=0,air=0,slot=1	
+488	重型全自动榴弹发射器	8	4	1	4	0	ItemAttr_RangedWeapon		16.0	hp=400,feed=1,auto=1,mag=0,air=0,slot=1	
+489	白隼战术霰弹枪	5	2	1	4	1	ItemAttr_RangedWeapon		3.2	hp=320,feed=1,auto=0,mag=0,air=0,slot=1	
+490	气动复合弩	7	4	1	4	0	ItemAttr_RangedWeapon		3.22	hp=100,feed=1,auto=0,mag=-1,air=14,slot=1	
+491	.25气动手枪	3	2	1	4	0	ItemAttr_RangedWeapon		1.56	hp=240,feed=1,auto=0,mag=0,air=28,slot=0	
+492	气动机械弩	7	4	1	4	1	ItemAttr_RangedWeapon		3.22	hp=150,feed=1,auto=0,mag=-1,air=20,slot=1	
+493	.25高压气步枪	7	3	1	4	0	ItemAttr_RangedWeapon		2.2	hp=250,feed=1,auto=0,mag=0,air=33,slot=1	
+494	阿特曼M2R气步枪	7	3	1	4	0	ItemAttr_RangedWeapon		2.45	hp=350,feed=1,auto=0,mag=0,air=35,slot=1	
+495	.50龙爪气步枪	7	3	1	4	0	ItemAttr_RangedWeapon		2.45	hp=350,feed=1,auto=0,mag=0,air=35,slot=1	
+496	.50高压气步枪	7	3	1	4	0	ItemAttr_RangedWeapon		2.5	hp=210,feed=1,auto=0,mag=0,air=32,slot=1	
+497	.25折膛气步枪	7	3	1	4	0	ItemAttr_RangedWeapon		2.05	hp=180,feed=1,auto=0,mag=0,air=0,slot=1	
+498	.50高压气手枪	4	2	1	4	0	ItemAttr_RangedWeapon		2.25	hp=160,feed=1,auto=0,mag=0,air=28,slot=0	
+499	守卫者60mm榴弹炮	12	4	1	4	1	ItemAttr_RangedWeapon		7.5	hp=300,feed=1,auto=0,mag=0,air=0,slot=1	
+500	普通背包	6	8	1	7	0	ItemAttr_Backpack	10x14	1.2		
+501	探险背包	8	10	1	7	0	ItemAttr_Backpack	10x18	1.6		
+502	登山背包	10	12	1	7	0	ItemAttr_Backpack	13x22	1.6		
+503	户外背包	10	12	1	7	0	ItemAttr_Backpack	14x28	2.0		
+504	双肩背包	6	7	1	7	0	ItemAttr_Backpack	8x10	0.88		
+505	超大户外背包	10	12	1	7	1	ItemAttr_Backpack	16x30	2.0		
+506	布制背包	8	10	1	7	1	ItemAttr_Backpack	18x28	1.1		
+507	布袋包	6	8	1	7	1	ItemAttr_Backpack	10x14	1.1		
+508	皮制背包	8	10	1	7	1	ItemAttr_Backpack	22x34	1.25		
+509	轻便束口背包	6	7	1	7	0	ItemAttr_Backpack	8x10	0.88		
+510	骑行背包	6	8	1	7	0	ItemAttr_Backpack	9x12	1.0		
+511	邮差背包	4	6	1	7	0	ItemAttr_Backpack	10x14	1.2		
+512	卷口背包	5	8	1	7	0	ItemAttr_Backpack	10x18	1.6		
+513	战术巡逻背包	6	8	1	7	0	ItemAttr_Backpack	12x20	1.5		
+514	超大远征背包	7	10	1	7	0	ItemAttr_Backpack	20x32	2.4		
+515	巨蜥皮背包	7	10	1	7	1	ItemAttr_Backpack	22x36	1.3		
+520	弹壳收集器	2	3	1	7	0	ItemAttr_Backpack	12x16	1.1	noequip=1	
+521	圣诞节限定弹壳收集器	2	3	1	7	0	ItemAttr_Backpack	12x16	1.1	noequip=1	
+530	保险箱	5	5	1	7	0	ItemAttr_Backpack	10x6	1.65	noequip=1	
+531	行李箱	5	7	1	7	0	ItemAttr_Backpack	10x15	2.8	noequip=1	
+532	弹药箱	5	4	1	7	0	ItemAttr_Backpack	10x8	2.8	noequip=1	9
+600	破片手雷	1	1	10	8	0	ItemAttr_Throwable		0.35		
+601	简易燃烧瓶	1	2	10	8	0	ItemAttr_Throwable		0.3		
+610	简易炸弹	1	2	10	8	1	ItemAttr_Throwable		0.25		
+611	铁罐炸弹	1	2	10	8	1	ItemAttr_Throwable		0.25		
+612	声光炸弹	1	2	10	8	1	ItemAttr_Throwable		0.25		
+613	辐射炸弹	1	2	5	8	1	ItemAttr_Throwable		0.6		
+620	强效治疗烟雾	1	2	10	8	0	ItemAttr_Throwable		0.25		
+700	9mm弹匣	1	2	1	9	0	ItemAttr_Magazine		0.3	cap=30	
+701	9mm弹鼓	2	3	1	9	0	ItemAttr_Magazine		1.2	cap=60	
+702	9mm弹匣	2	2	1	9	0	ItemAttr_Magazine		0.6	cap=40	
+703	5.56弹匣	1	2	1	9	0	ItemAttr_Magazine		0.6	cap=30	
+704	5.56弹匣	1	2	1	9	0	ItemAttr_Magazine		0.42	cap=25	
+705	9mm弹匣	1	2	1	9	0	ItemAttr_Magazine		0.3	cap=17	
+706	.22LR弹匣(10发)	1	1	1	9	0	ItemAttr_Magazine		0.15	cap=10	
+707	.22LR弹匣(20发)	1	2	1	9	0	ItemAttr_Magazine		0.2	cap=20	
+708	.22LR弹匣(30发)	2	2	1	9	0	ItemAttr_Magazine		0.3	cap=30	
+709	.22LR弹鼓	2	3	1	9	0	ItemAttr_Magazine		1.2	cap=55	
+710	.22弹匣(12发)	1	2	1	9	0	ItemAttr_Magazine		0.12	cap=12	
+711	.22LR弹鼓(110发)	2	3	1	9	0	ItemAttr_Magazine		1.8	cap=110	
+720	.45 ACP 弹匣	1	2	1	9	0	ItemAttr_Magazine		0.15	cap=8	
+721	.45 ACP 加长弹匣	1	2	1	9	0	ItemAttr_Magazine		0.2	cap=15	
+722	.45 ACP 26发弹匣	1	3	1	9	0	ItemAttr_Magazine		0.3	cap=26	
+723	.45 ACP 50发弹鼓	2	3	1	9	0	ItemAttr_Magazine		0.5	cap=50	
+740	5.56弹鼓(60发)	2	3	1	9	0	ItemAttr_Magazine		1.12	cap=60	
+741	5.56x45 弹链(200发)	3	2	1	9	0	ItemAttr_Magazine		2.4	cap=200	
+750	7.62弹匣	1	2	1	9	0	ItemAttr_Magazine		0.43	cap=30	
+751	7.62扩展弹匣	1	2	1	9	0	ItemAttr_Magazine		0.56	cap=40	
+752	7.62x39mm 弹鼓	2	3	1	9	0	ItemAttr_Magazine		1.02	cap=75	
+760	.300马格南步枪弹匣(5发)	2	1	1	9	0	ItemAttr_Magazine		0.24	cap=5	
+770	50BMG弹匣(5发)	2	2	1	9	0	ItemAttr_Magazine		0.8	cap=5	
+800	霰弹枪短管	4	2	1	11	0	ItemAttr_GunPart		0.2	dur=420	
+801	贝纳利枪口抑制器	3	1	1	11	0	ItemAttr_GunPart		0.3	dur=300	
+802	消音霰弹枪管	3	1	1	11	0	ItemAttr_GunPart		0.3	dur=240	
+803	GMTECH消声器	2	1	1	11	0	ItemAttr_GunPart		0.32	dur=480	
+804	欧米茄枪口抑制器	2	1	1	11	0	ItemAttr_GunPart		0.32	dur=600	
+805	9mm长枪管	3	1	1	11	0	ItemAttr_GunPart		0.32	dur=900	
+806	9mm短管	2	1	1	11	0	ItemAttr_GunPart		0.32	dur=720	
+807	GMTECH 5.56 步枪消音器	3	1	1	11	0	ItemAttr_GunPart		0.32	dur=720	
+808	步枪加长枪管	3	1	1	11	0	ItemAttr_GunPart		0.32	dur=900	
+809	LUNAR枪口抑制器	3	1	1	11	0	ItemAttr_GunPart		0.32	dur=840	
+810	红点瞄准镜	1	1	1	11	0	ItemAttr_GunPart		0.32	dur=1800	
+811	全息瞄准镜	1	1	1	11	0	ItemAttr_GunPart		0.32	dur=2400	
+812	.22消声器	3	1	1	11	0	ItemAttr_GunPart		0.32	dur=720	
+813	2X红点瞄准镜	1	1	1	11	0	ItemAttr_GunPart		0.32	dur=1500	
+814	4X红点瞄准镜	2	1	1	11	0	ItemAttr_GunPart		0.32	dur=1500	
+815	2X全息瞄准镜	1	1	1	11	0	ItemAttr_GunPart		0.32	dur=1500	
+816	4X全息瞄准镜	1	1	1	11	0	ItemAttr_GunPart		0.32	dur=1500	
+817	PA6X瞄准镜	2	1	1	11	0	ItemAttr_GunPart		0.32	dur=1500	
+818	Hunter 8X瞄准镜	2	1	1	11	0	ItemAttr_GunPart		0.32	dur=1200	
+819	激光瞄准器-绿	1	1	1	11	0	ItemAttr_GunPart		0.2	dur=1500	
+820	通用轻量化枪托	4	2	1	11	0	ItemAttr_GunPart		0.35	dur=1800	
+821	短柄枪托(霰弹)	2	2	1	11	0	ItemAttr_GunPart		0.35	dur=1800	
+822	轻量化便携枪托	4	2	1	11	0	ItemAttr_GunPart		0.35	dur=1800	
+823	CTR战术短枪托	3	2	1	11	0	ItemAttr_GunPart		0.35	dur=1800	
+824	CTR长枪托	4	2	1	11	0	ItemAttr_GunPart		0.35	dur=1800	
+825	木制长枪托	4	2	1	11	0	ItemAttr_GunPart		0.35	dur=1800	
+826	GMTECH便携枪托	4	2	1	11	0	ItemAttr_GunPart		0.35	dur=1800	
+827	一体式降噪枪托	4	2	1	11	0	ItemAttr_GunPart		0.35	dur=1800	
+828	自制减震枪托	4	2	1	11	1	ItemAttr_GunPart		0.58	dur=1800	9
+830	简易消声器	2	1	1	11	1	ItemAttr_GunPart		0.3	dur=36	
+831	简易消声器(大)	3	2	1	11	1	ItemAttr_GunPart		0.3	dur=72	
+832	铁罐消声器	3	1	1	11	1	ItemAttr_GunPart		0.4	dur=120	
+833	金属消声器	3	1	1	11	1	ItemAttr_GunPart		0.4	dur=210	
+840	GMTECH 7.62 步枪消音器	3	1	1	11	0	ItemAttr_GunPart		0.4	dur=600	
+841	LUNAR 7.62mm枪口抑制器	3	1	1	11	0	ItemAttr_GunPart		0.4	dur=600	
+850	.300消声器	2	1	1	11	0	ItemAttr_GunPart		0.48	dur=600	
+855	.45 ACP 消声器	3	1	1	11	0	ItemAttr_GunPart		0.45	dur=720	
+856	.45 ACP 加长枪管	3	1	1	11	0	ItemAttr_GunPart		0.32	dur=900	
+860	增压气罐	3	1	1	11	0	ItemAttr_GunPart		0.55	dur=720	
+861	电动气泵	3	1	1	11	0	ItemAttr_GunPart		0.7	dur=1500	
+865	枪口节气阀	2	1	1	11	0	ItemAttr_GunPart		0.55	dur=540	
+866	超增压节气阀	2	1	1	11	0	ItemAttr_GunPart		0.65	dur=360	
+867	静音压节气阀	2	1	1	11	0	ItemAttr_GunPart		0.45	dur=360	
+870	激光瞄准器-红	1	1	1	11	0	ItemAttr_GunPart		0.2	dur=1500	
+871	高功率激光瞄准器-蓝	1	1	1	11	0	ItemAttr_GunPart		0.2	dur=1500	
+875	广角热成像瞄准器	2	1	1	11	0	ItemAttr_GunPart		0.35	dur=1500	
+876	高倍热成像瞄准器	2	1	1	11	0	ItemAttr_GunPart		0.35	dur=1500	
+880	广角微光夜视瞄准器	2	1	1	11	0	ItemAttr_GunPart		0.35	dur=1500	
+881	高倍微光夜视瞄准器	2	1	1	11	0	ItemAttr_GunPart		0.35	dur=1500	
+900	简易地雷	2	2	10	12	0	ItemAttr_Deployable		0.875		
+901	简易爆桶	2	3	1	12	0	ItemAttr_Deployable		4.0		
+902	自制地雷	2	2	10	12	1	ItemAttr_Deployable		0.5		
+903	尖刺陷阱	2	2	10	12	1	ItemAttr_Deployable		0.35		
+904	粗糙的铁刺陷阱	2	2	10	12	1	ItemAttr_Deployable		0.35		
+905	尖锐的铁刺陷阱	2	2	10	12	1	ItemAttr_Deployable		0.35		
+906	高爆诡雷	2	3	10	12	1	ItemAttr_Deployable		1.05		
+910	便携睡袋	5	4	1	12	0	ItemAttr_Deployable		4.0		
+911	毛皮睡袋	5	4	1	12	0	ItemAttr_Deployable		4.0		
+930	动物陷阱	3	3	1	12	0	ItemAttr_Deployable		3.0		
+931	鸟类陷阱	3	3	1	12	0	ItemAttr_Deployable		3.0		
+932	巨蜥诱饵	3	3	1	12	1	ItemAttr_Deployable		2.5		
+933	巡猎无人机炸弹	2	2	3	8	1	ItemAttr_Throwable		0.6		
+940	12发装礼花弹	3	3	1	12	0	ItemAttr_Deployable		4.0		
+941	12发装彩色礼花弹	3	3	1	12	0	ItemAttr_Deployable		4.0		
+942	12发装马尾礼花弹	3	3	1	12	0	ItemAttr_Deployable		4.0		
+945	喷泉烟花	2	3	1	12	0	ItemAttr_Deployable		4.0		
+946	彩色喷泉烟花	2	3	1	12	0	ItemAttr_Deployable		4.0		
+947	姜饼人喷泉烟花	2	3	1	12	0	ItemAttr_Deployable		4.0		
+950	简易电灯	2	3	1	12	0	ItemAttr_Deployable		1.2		
+960	弩箭塔	3	3	1	12	0	ItemAttr_Deployable		12.0		
+961	机枪塔	3	3	1	12	0	ItemAttr_Deployable		16.0		
+962	激光塔	3	3	1	12	0	ItemAttr_Deployable		14.0		
+963	特斯拉电磁塔	3	3	1	12	0	ItemAttr_Deployable		14.0		
+1000	12号弹壳	1	1	100	0	0	ItemAttr		0.002		
+1001	9mm弹壳	1	1	100	0	0	ItemAttr		0.001		
+1002	5.56弹壳	1	1	100	0	0	ItemAttr		0.002		
+1003	.22LR 弹壳	1	1	100	0	0	ItemAttr		0.001		
+1004	7.62x39弹壳	1	1	100	0	0	ItemAttr		0.002		
+1005	.300马格南弹壳	1	1	100	0	0	ItemAttr		0.004		
+1006	.50 BMG 弹壳	1	2	100	0	0	ItemAttr		0.01		
+1007	.45 ACP 弹壳	1	1	100	0	0	ItemAttr		0.001		
+1010	金属弹丸	1	1	100	0	1	ItemAttr		0.04		
+1020	40mm高爆榴弹壳	1	1	100	0	0	ItemAttr		0.008		
+1021	25mm信号弹弹壳	1	1	100	0	0	ItemAttr		0.008		
+1050	突变组织	1	1	999	0	1	ItemAttr		0.0		
+1051	突变的心脏	1	2	999	0	1	ItemAttr		0.0		
+1052	植物化组织	1	2	999	0	1	ItemAttr		0.0		
+1053	突变神经组织	2	1	999	0	1	ItemAttr		0.0		
+1060	燃烧组件	2	3	1	0	0	ItemAttr		0.25		20
+1061	电击组件	2	3	1	0	0	ItemAttr		0.25		20
+1062	穿刺组件	2	3	1	0	0	ItemAttr		0.25		20
+1063	便携小冰箱	4	4	1	7	0	ItemAttr_Backpack	8x6	3.0	noequip=1	11,12,32
+1064	便携电磁炉	3	2	1	0	0	ItemAttr		4.0		11,12,33
+1065	电热水壶	2	3	1	13	0	ItemAttr_Container		0.6	cap=2000	11,12,34
+1066	便携充电箱	3	3	1	7	0	ItemAttr_Backpack	8x4	1.5	appliance=1,noequip=1	11,12,35
+1067	太阳能充电箱	3	3	1	7	0	ItemAttr_Backpack	8x4	1.2	appliance=1,noequip=1	36
+1068	电动充气筒	2	2	1	0	0	ItemAttr		0.6		11,12,37
+1069	暖手宝	1	2	1	0	0	ItemAttr		0.15		11,12,38
+1070	实验型机器人处理单元	3	3	1	0	1	ItemAttr		1.48		
+1071	破损的手机	1	2	10	0	0	ItemAttr		0.25		
+1072	9V电池解码器	2	3	1	0	0	ItemAttr		0.25		11,12,24
+1073	对讲机	1	2	1	0	0	ItemAttr		0.25		11,12,25
+1074	笔记本电脑	2	2	5	0	0	ItemAttr		2.2		
+1075	针线包	2	2	100	0	0	ItemAttr		0.01		
+1076	头戴式夜视仪-绿管	2	2	1	0	0	ItemAttr		0.25		11,12,13
+1077	头戴式夜视仪-蓝管	2	2	1	0	0	ItemAttr		0.25		11,12,13
+1078	谐波减速器	1	1	20	0	0	ItemAttr		0.6		
+1079	降温小风扇	1	2	1	0	0	ItemAttr		0.2		11,12,38
+1080	镭射手炮	4	2	1	0	1	ItemAttr		2.48		17
+1081	压缩机零件	1	2	1	0	0	ItemAttr		2.2		9
+1082	工业电机	3	3	1	0	0	ItemAttr		1.5		
+1083	白隼外骨骼装甲	4	5	1	0	1	ItemAttr		8.0		39
+1084	白隼矢量推进器	3	4	1	0	1	ItemAttr		4.0		39
+1085	白隼重型塔盾	3	6	1	0	1	ItemAttr		6.0		39
+1086	白隼蓝色肩炮	4	2	1	0	1	ItemAttr		3.0		17
+1087	物资补给包	3	3	1	7	1	ItemAttr_Backpack	10x6	0.5	noequip=1	
+1090	金块	1	1	100	0	0	ItemAttr		0.0		
+1091	红宝石	1	1	100	0	0	ItemAttr		0.0		
+1092	守卫者榴弹手炮	4	2	1	0	1	ItemAttr		2.48		17
+1093	共振核心	2	2	1	0	1	ItemAttr		1.5		17
+1100	矿泉水瓶	1	3	1	13	0	ItemAttr_Container		0.05	cap=800	9
+1101	水壶	2	3	1	13	0	ItemAttr_Container		0.2	cap=2000	9
+1102	大号水壶	2	4	1	13	0	ItemAttr_Container		0.4	cap=4000	9
+1103	大矿泉水瓶	2	3	1	13	0	ItemAttr_Container		0.1	cap=2000	9
+1104	小号油桶	3	4	1	13	0	ItemAttr_Container		1.0	cap=10000	9
+1105	大号油桶	4	6	1	13	0	ItemAttr_Container		1.0	cap=30000	9
+1106	塑料小桶	3	5	1	13	0	ItemAttr_Container		1.0	cap=15000	9
+1107	塑料大桶	4	7	1	13	1	ItemAttr_Container		2.0	cap=200000	9
+1108	铁罐	1	2	1	13	0	ItemAttr_Container		0.025	cap=300	9
+1109	玻璃瓶	1	2	1	13	0	ItemAttr_Container		0.03	cap=600	9
+1110	过滤饮水器	2	3	1	13	1	ItemAttr_Container		2.0	cap=2000	
+1111	烹饪锅	3	3	1	13	0	ItemAttr_Container		1.0	cap=8000	9
+1112	铁桶	2	3	1	13	0	ItemAttr_Container		1.0	cap=8000	9
+1113	结实的金属水瓶	1	3	1	13	0	ItemAttr_Container		0.025	cap=2000	9
+1200	生水	3	3	100000	14	1	ItemAttr_Liquid		0.0		
+1201	净水	3	3	100000	14	1	ItemAttr_Liquid		0.0		
+1202	燃油	3	3	100000	14	1	ItemAttr_Liquid		0.0		
+1203	生物柴油	3	3	100000	14	1	ItemAttr_Liquid		0.0		
+1204	植物油	3	3	100000	14	1	ItemAttr_Liquid		0.0		
+1205	硫酸	3	3	100000	14	1	ItemAttr_Liquid		0.0		
+1206	硝酸	3	3	100000	14	1	ItemAttr_Liquid		0.0		
+1300	自制口罩	2	2	1	2	1	ItemAttr_FaceMask		0.05		
+1301	N95口罩	2	2	1	2	0	ItemAttr_FaceMask		0.08		
+1302	制式防毒面具	2	2	1	2	0	ItemAttr_FaceMask		0.15		
+1303	一次性口罩	2	2	1	2	0	ItemAttr_FaceMask		0.05		
+1400	雷明顿870霰弹枪零件	2	2	10	0	1	ItemAttr		0.5		
+1401	乌兹冲锋枪零件	2	2	10	0	1	ItemAttr		0.5		
+1402	MP5-K 冲锋枪零件	2	2	10	0	1	ItemAttr		0.5		
+1403	AR-15 突击步枪零件	2	2	10	0	1	ItemAttr		0.5		
+1404	ARX100 突击步枪零件	2	2	10	0	1	ItemAttr		0.5		
+1405	格洛克17零件	2	2	10	0	1	ItemAttr		0.5		
+1406	史密斯伟森 929 转轮手枪零件	2	2	10	0	1	ItemAttr		0.5		
+1407	鲁格10/22零件	2	2	10	0	1	ItemAttr		0.5		
+1408	KRISS Vector 卡宾枪零件	2	2	10	0	1	ItemAttr		0.5		
+1409	柯尔特 M1911-9mm零件	2	2	10	0	1	ItemAttr		0.5		
+1410	寻路者 .22转轮手枪零件	2	2	10	0	1	ItemAttr		0.5		
+1411	鲁格 GP100 .22零件	2	2	10	0	1	ItemAttr		0.5		
+1412	鲁格 MK IV零件	2	2	10	0	1	ItemAttr		0.5		
+1413	2011 Combat Master零件	2	2	10	0	1	ItemAttr		0.5		
+1414	格洛克18(全自动)零件	2	2	10	0	1	ItemAttr		0.5		
+1415	VSS微声步枪零件	2	2	10	0	1	ItemAttr		0.5		
+1416	B&T MP9零件	2	2	10	0	1	ItemAttr		0.5		
+1417	美洲180 (改装版)零件	2	2	10	0	1	ItemAttr		0.5		
+1418	MAC-11/9零件	2	2	10	0	1	ItemAttr		0.5		
+1419	柯尔特 M1911零件	2	2	10	0	1	ItemAttr		0.5		
+1420	塔沃尔 SAR 突击步枪零件	2	2	10	0	1	ItemAttr		0.5		
+1421	M249 通用机枪零件	3	3	10	0	1	ItemAttr		0.5		
+1422	格洛克21C(全自动)零件	2	2	10	0	1	ItemAttr		0.5		
+1423	M3 冲锋枪零件	2	2	10	0	1	ItemAttr		0.5		
+1424	汤普森冲锋枪零件	2	2	10	0	1	ItemAttr		0.5		
+1430	AK47 突击步枪零件	2	2	10	0	1	ItemAttr		0.5		
+1431	鲁格M77零件	2	2	10	0	1	ItemAttr		0.5		
+1432	MK47步枪零件	2	2	10	0	1	ItemAttr		0.5		
+1433	RPK 轻机枪零件	3	3	10	0	1	ItemAttr		0.5		
+1434	德利尔卡宾枪零件	2	2	10	0	1	ItemAttr		0.5		
+1440	鲁格.300马格南栓动步枪零件	2	2	10	0	1	ItemAttr		0.5		
+1441	温彻斯特70型步枪零件	2	2	10	0	1	ItemAttr		0.5		
+1445	GM6山猫反器材步枪零件	2	2	10	0	1	ItemAttr		0.5		
+1446	.50BMG 手腕摧毁者零件	2	2	10	0	1	ItemAttr		0.5		
+1447	25mm信号枪零件	2	2	10	0	1	ItemAttr		0.5		
+1450	复合弓零件	2	2	10	0	1	ItemAttr		0.5		
+1451	木制弓零件	2	2	10	0	1	ItemAttr		0.5		
+1455	木制十字弩零件	2	2	10	0	1	ItemAttr		0.5		
+1456	铁质十字弩零件	2	2	10	0	1	ItemAttr		0.5		
+1457	木制手弩零件	2	2	10	0	1	ItemAttr		0.5		
+1458	机械十字弩零件	2	2	10	0	1	ItemAttr		0.5		
+1459	复合弩零件	2	2	10	0	1	ItemAttr		0.5		
+1460	老式双管霰弹枪零件	2	2	10	0	1	ItemAttr		0.5		
+1461	简易霰弹枪零件	2	2	10	0	1	ItemAttr		0.5		
+1462	三管霰弹枪零件	2	2	10	0	1	ItemAttr		0.5		
+1463	手腕摧毁者零件	2	2	10	0	1	ItemAttr		0.5		
+1464	打击者霰弹枪零件	2	2	10	0	1	ItemAttr		0.5		
+1465	电磁轨道枪零件	2	2	10	0	1	ItemAttr		0.5		
+1466	采矿激光器零件	2	2	10	0	1	ItemAttr		1.0		
+1467	特斯拉枪零件	2	2	10	0	1	ItemAttr		1.0		
+1468	M2火焰喷射器零件	2	2	10	0	1	ItemAttr		1.0		
+1469	高压喷水枪零件	2	2	10	0	1	ItemAttr		1.0		
+1470	自制霰弹发射器零件	2	2	10	0	1	ItemAttr		0.5		
+1471	自制5.56发射器零件	2	2	10	0	1	ItemAttr		0.5		
+1472	自制7.62发射器零件	2	2	10	0	1	ItemAttr		0.5		
+1473	自制马格南发射器零件	2	2	10	0	1	ItemAttr		0.5		
+1474	自制9mm发射器零件	2	2	10	0	1	ItemAttr		0.5		
+1475	自制.22发射器零件	2	2	10	0	1	ItemAttr		0.5		
+1476	自制5.56手枪零件	2	2	10	0	1	ItemAttr		0.5		
+1477	自制7.62手枪零件	2	2	10	0	1	ItemAttr		0.5		
+1480	M230重机枪零件	2	2	10	0	1	ItemAttr		0.5		
+1481	高能激光炮零件	2	2	10	0	1	ItemAttr		0.5		
+1482	瞬发激光炮零件	2	2	10	0	1	ItemAttr		0.5		
+1485	中国湖40mm榴弹发射器零件	2	2	10	0	1	ItemAttr		0.5		
+1486	自制双管榴弹发射器零件	2	2	10	0	1	ItemAttr		0.5		
+1487	米尔科姆转轮连发式榴弹发射器零件	2	2	10	0	1	ItemAttr		0.5		
+1488	重型全自动榴弹发射器零件	2	2	10	0	1	ItemAttr		0.5		
+1490	气动复合弩零件	2	2	10	0	1	ItemAttr		0.5		
+1491	.25气动手枪零件	2	2	10	0	1	ItemAttr		0.5		
+1492	气动机械弩零件	2	2	10	0	1	ItemAttr		0.5		
+1493	.25高压气步枪零件	2	2	10	0	1	ItemAttr		0.5		
+1494	阿特曼M2R气步枪零件	2	2	10	0	1	ItemAttr		0.5		
+1495	.50龙爪气步枪零件	2	2	10	0	1	ItemAttr		0.5		
+1496	.50高压气步枪零件	2	2	10	0	1	ItemAttr		0.5		
+1497	.25折膛气步枪零件	2	2	10	0	1	ItemAttr		0.5		
+1498	.50高压气手枪零件	2	2	10	0	1	ItemAttr		0.5		
+1500	简易斗篷	3	4	1	15	1	ItemAttr_Cloak		0.5		
+1501	迷彩斗篷	3	4	1	15	0	ItemAttr_Cloak		0.5		
+1502	高质量斗篷	3	4	1	15	0	ItemAttr_Cloak		0.5		
+1503	缝合斗篷	3	4	1	15	0	ItemAttr_Cloak		0.5		
+1504	流浪者斗篷	3	4	1	15	0	ItemAttr_Cloak		0.5		
+1505	巨蜥皮斗篷	3	4	1	15	1	ItemAttr_Cloak		0.6		
+1506	防辐射斗篷	3	4	1	15	1	ItemAttr_Cloak		1.4		
+1601	头部装饰	2	2	1	0	1	ItemAttr		0.5		22
+1602	头部装饰	2	2	1	0	1	ItemAttr		0.5		22
+1603	头部装饰	2	2	1	0	1	ItemAttr		0.5		22
+1604	头部装饰	2	2	1	0	1	ItemAttr		0.5		22
+1605	头部装饰	2	2	1	0	0	ItemAttr		0.5		22
+1606	头部装饰	2	2	1	0	0	ItemAttr		0.5		22
+1607	头部装饰	2	2	1	0	0	ItemAttr		0.5		22
+1608	头部装饰	2	2	1	0	0	ItemAttr		0.5		22
+1609	头部装饰	2	2	1	0	0	ItemAttr		0.5		22
+1610	头部装饰	2	2	1	0	0	ItemAttr		0.5		22
+1611	头部装饰	2	2	1	0	0	ItemAttr		0.5		22
+1612	头部装饰	2	2	1	0	0	ItemAttr		0.5		22
+1613	头部装饰	2	2	1	0	0	ItemAttr		0.5		22
+1614	消防队头盔	2	2	1	0	0	ItemAttr		0.5		22
+1615	瘟疫医生头饰	2	2	1	0	0	ItemAttr		0.5		22
+1616	马年头套	2	2	1	0	0	ItemAttr		0.5		22
+1617	军用头盔	2	2	1	0	0	ItemAttr		0.5		22
+1618	军用头盔	2	2	1	0	0	ItemAttr		0.5		22
+1619	猫耳发箍	2	2	1	0	0	ItemAttr		0.1		22
+1620	兔耳发箍	2	2	1	0	0	ItemAttr		0.1		22
+1621	蝴蝶结发箍	2	2	1	0	0	ItemAttr		0.1		22
+1622	波点发带	2	2	1	0	0	ItemAttr		0.1		22
+1623	花环发箍	2	2	1	0	0	ItemAttr		0.1		22
+1624	女仆头饰	2	2	1	0	0	ItemAttr		0.1		22
+1625	白隼武士头盔	2	3	1	0	1	ItemAttr		1.5		22
+1626	蜥蜴头饰	3	3	1	0	1	ItemAttr		0.8		22
+1700	蠕虫	1	1	10	0	1	ItemAttr		0.05		23
+1701	金龟子幼虫	2	2	10	0	0	ItemAttr		0.05		23
+1710	塑料拟饵	2	2	1	0	0	ItemAttr		0.05		23,9
+1711	彩色塑料拟饵	2	2	1	0	0	ItemAttr		0.05		23,9
+1712	亮片金属拟饵	2	2	1	0	0	ItemAttr		0.05		23
+1713	螃蟹拟饵	2	2	1	0	0	ItemAttr		0.05		23
+1714	吞拿鱼拟饵	3	2	1	0	0	ItemAttr		0.05		23
+1801	玉米种子	2	2	100	0	0	ItemAttr		0.05		26
+1802	萝卜种子	2	2	100	0	0	ItemAttr		0.05		26
+1803	蘑菇菌种	2	2	100	0	0	ItemAttr		0.05		26
+1804	土豆种薯	2	2	100	0	0	ItemAttr		0.05		26
+1805	番茄种子	2	2	100	0	0	ItemAttr		0.05		26
+1806	辣椒种子	2	2	100	0	0	ItemAttr		0.05		26
+1807	棉籽	2	2	100	0	0	ItemAttr		0.05		26
+1808	夏枯草种子	2	2	100	0	0	ItemAttr		0.05		26
+1809	草籽	1	1	100	0	1	ItemAttr		0.005		
+1810	小麦种子	2	2	100	0	0	ItemAttr		0.05		26
+1811	蓝莓种子	2	2	100	0	0	ItemAttr		0.05		26
+1812	红莓种子	2	2	100	0	0	ItemAttr		0.05		26
+1900	皮项圈	2	1	1	0	0	ItemAttr		0.2		28
+1901	铃铛项圈	2	1	1	0	0	ItemAttr		0.2		28
+1902	战术项圈	2	1	1	0	0	ItemAttr		0.3		28
+1905	狗粮罐头	1	1	1	1	0	ItemAttr_Food		0.4		31
+1906	肉干零食	1	1	1	1	0	ItemAttr_Food		0.15		31
+1907	网球	1	1	5	8	0	ItemAttr_Throwable		0.06		
+1910	布制护甲背心	2	2	1	0	0	ItemAttr		0.6		29
+1911	防弹背心	2	2	1	0	0	ItemAttr		1.5		29
+1920	狗用挂包	2	2	1	0	0	ItemAttr		0.8		30
+1930	巨蜥血清	1	2	1	1	1	ItemAttr_Food		0.2	perish=180	
+1931	巨蜥再生剂	1	2	1	1	1	ItemAttr_Food		0.2	perish=400	
+1932	鳞甲硬化膏	1	2	1	1	1	ItemAttr_Food		0.2	perish=400	
+1933	蜥蜴麝香	1	2	1	1	1	ItemAttr_Food		0.2	perish=200	
+1940	属性强化剂(联机)	1	3	1	1	1	ItemAttr_Food		0.1		
+2000	螺旋桨发动机	4	4	1	0	1	ItemAttr		8.0		
+2001	飞行传感器模块	2	2	1	0	1	ItemAttr		8.0		
+2002	飞控电脑模块	3	3	1	0	1	ItemAttr		8.0		
+2003	雷达模型	3	3	1	0	1	ItemAttr		8.0		
+2010	安保门禁装置	2	2	1	0	1	ItemAttr		0.05		
+2011	研究员门禁装置	2	2	1	0	1	ItemAttr		0.05		
+2012	基地门禁装置	2	2	1	0	1	ItemAttr		0.05		
+2013	军械库门禁卡	2	2	1	0	1	ItemAttr		0.05		
+2014	放射性同位素样本	1	1	10	0	1	ItemAttr		0.15		
+2020	巨蜥皮	3	3	20	0	1	ItemAttr		0.8		
+2021	巨蜥鳞片	2	2	50	0	1	ItemAttr		0.15		
+2022	变异腺体	2	2	10	0	1	ItemAttr		0.3		
+2023	巨蜥牙	1	3	20	0	1	ItemAttr		0.2		
+2024	巨蜥牙匕首	1	2	1	0	1	ItemAttr		0.15		6,18
+2025	巨蜥牙箭矢	4	1	10	10	1	ItemAttr_Arrow		0.03		
+10000	休闲服	3	3	1	5	0	ItemAttr_Clothing		0.0	pockets=0x0/6x2/6x2/0x0	
+10010	休闲服 (深色)	3	3	1	5	0	ItemAttr_Clothing		0.0	pockets=0x0/6x2/6x2/0x0	
+10020	仿制军用服	3	3	1	5	0	ItemAttr_Clothing		0.0	pockets=0x0/8x4/8x4/0x0	
+10030	防暴服	3	3	1	5	0	ItemAttr_Clothing		0.0	pockets=0x0/6x2/6x2/0x0	
+10040	EXS-MK1 外骨骼	3	3	1	5	1	ItemAttr_Clothing		0.0	pockets=0x0/6x2/6x2/0x0	
+10050	掠夺者	3	3	1	5	1	ItemAttr_Clothing		0.0	pockets=0x0/6x2/6x2/0x0	
+10060	掠夺者	3	3	1	5	1	ItemAttr_Clothing		0.0	pockets=0x0/6x2/6x2/0x0	
+10070	掠夺者	3	3	1	5	1	ItemAttr_Clothing		0.0	pockets=0x0/6x2/6x2/0x0	
+10080	厚休闲装	3	3	1	5	0	ItemAttr_Clothing		0.0	pockets=0x0/6x3/6x2/0x0	
+10090	羽绒套装	3	3	1	5	0	ItemAttr_Clothing		0.0	pockets=0x0/6x2/6x2/0x0	
+10100	凯夫拉套装	3	3	1	5	0	ItemAttr_Clothing		0.0	pockets=0x0/6x3/6x2/0x0	
+10110	制式凯夫拉服	3	3	1	5	0	ItemAttr_Clothing		0.0	pockets=0x0/8x4/6x2/0x0	
+10120	1级防弹服	3	3	1	5	0	ItemAttr_Clothing		0.0	pockets=0x0/6x2/6x2/0x0	
+10130	休闲服 (深灰)	3	3	1	5	0	ItemAttr_Clothing		0.0	pockets=0x0/6x2/6x2/0x0	
+10140	警员制服	3	3	1	5	0	ItemAttr_Clothing		0.0	pockets=0x0/6x3/6x2/0x0	
+10150	运动套装 (红)	3	3	1	5	0	ItemAttr_Clothing		0.0	pockets=0x0/6x2/6x2/0x0	
+10160	运动套装 (蓝)	3	3	1	5	0	ItemAttr_Clothing		0.0	pockets=0x0/6x2/6x2/0x0	
+10170	运动套装 (灰)	3	3	1	5	0	ItemAttr_Clothing		0.0	pockets=0x0/6x2/6x2/0x0	
+10180	多口袋马甲 (橄榄绿)	3	3	1	5	0	ItemAttr_Clothing		0.0	pockets=0x0/8x5/8x4/0x0	
+10190	多口袋休闲服 (棕)	3	3	1	5	0	ItemAttr_Clothing		0.0	pockets=0x0/8x5/8x4/0x0	
+10200	多口袋马甲 (黑)	3	3	1	5	0	ItemAttr_Clothing		0.0	pockets=0x0/8x5/8x4/0x0	
+10210	工地工装 (棕)	3	3	1	5	0	ItemAttr_Clothing		0.0	pockets=0x0/8x4/8x4/0x0	
+10220	工地工装 (蓝)	3	3	1	5	0	ItemAttr_Clothing		0.0	pockets=0x0/8x4/8x4/0x0	
+10230	工地工装 (绿)	3	3	1	5	0	ItemAttr_Clothing		0.0	pockets=0x0/8x4/8x4/0x0	
+10240	军用挂载套装	3	3	1	5	0	ItemAttr_Clothing		0.0	pockets=0x0/10x4/10x3/0x0	
+10500	外骨骼	3	3	1	5	1	ItemAttr_Clothing		0.0	pockets=0x0/6x2/6x2/0x0	
+10600	流浪者套装	3	3	1	5	1	ItemAttr_Clothing		0.0	pockets=0x0/8x4/8x4/0x0	
+10610	流浪者套装	3	3	1	5	1	ItemAttr_Clothing		0.0	pockets=0x0/8x4/8x4/0x0	
+10620	流浪者套装	3	3	1	5	1	ItemAttr_Clothing		0.0	pockets=0x0/8x4/8x4/0x0	
+10630	流浪者套装	3	3	1	5	1	ItemAttr_Clothing		0.0	pockets=0x0/8x4/8x4/0x0	
+10640	流浪者头目套装	3	3	1	5	1	ItemAttr_Clothing		0.0	pockets=0x0/8x4/8x4/0x0	
+10700	巨蜥鳞皮猎装	3	3	1	5	1	ItemAttr_Clothing		0.0	pockets=0x0/8x4/8x4/0x0	
+10800	安保队员制服	3	3	1	5	1	ItemAttr_Clothing		0.0	pockets=0x0/8x4/8x4/0x0	
+10900	防辐射服	3	3	1	5	1	ItemAttr_Clothing		0.0	pockets=0x0/6x3/4x2/0x0	
+10910	重型防辐射护甲	3	3	1	5	1	ItemAttr_Clothing		0.0	pockets=0x0/6x3/4x2/0x0	
+10920	重型消防服	3	3	1	5	0	ItemAttr_Clothing		0.0	pockets=0x0/6x3/4x2/0x0	
+10930	工业隔热服	3	3	1	5	0	ItemAttr_Clothing		0.0	pockets=0x0/6x3/4x2/0x0	
+10940	重型防化服	3	3	1	5	0	ItemAttr_Clothing		0.0	pockets=0x0/6x3/4x2/0x0	
+10950	重型防弹服	3	3	1	5	0	ItemAttr_Clothing		0.0	pockets=0x0/6x3/4x2/0x0	
